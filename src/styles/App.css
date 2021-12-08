@@ -1,0 +1,237 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.app{
+    height: 100vh;
+    background-color: #222226;
+}
+
+.header{
+    width: 100%;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.main__logo{
+    width: 250px;
+    font-size: 34px;
+    outline: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #ffdcdc;
+}
+
+.main__logo:hover{
+    color: #cd0000;
+    transition: ease .3s;
+}
+
+.logo__pic{
+    min-height: 25px;
+    min-width: 25px;
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.navbar__container{
+    width: 900px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav__link{
+    font-size: 24px;
+    color: #ffdcdc;
+    outline: none;
+    text-decoration: none;
+}
+
+.nav__link:hover{
+    transition: ease .3s;
+    color: #cd0000;
+}
+
+.account__bar{
+    width: 140px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.NotificationBar{
+    width: 400px;
+    height: 500px;
+    position: absolute;
+    right: 30px;
+    border: 1px solid #ffdcdc;
+    border-radius: 10px;
+}
+
+.NtfSettings__container{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ffdcdc;
+}
+
+.NotificationItem{
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #ffdcdc;
+}
+
+.notification__link{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    outline: none;
+}
+
+.notification__link:hover{
+    transition: ease .5s;
+    background-color: #ffdcdc;
+}
+
+.ntfImg__container{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.accFeatures__container{
+    width: 200px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ffdcdc;
+    border-radius: 10px;
+    position: absolute;
+    right: 50px;
+}
+
+.accFeatures__link{
+    height: 33.3%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    text-decoration: none;
+    color: #ffdcdc;
+    border-radius: 10px;
+}
+
+.accFeatures__link:hover{
+    transition: ease .5s;
+    background-color: #ffdcdc;
+}
+
+.post{
+    width: 65%;
+    height: 280px;
+    border: 1px solid #ffdcdc;
+    border-radius: 7px;
+    background-color: #333336;
+}
+
+.post__user-info{
+    width: 45%;
+    height: 55px;
+    display: flex;
+    align-items: center;
+}
+
+.post__user-pic{
+    width: 40px;
+    height: 40px;
+}
+
+.post__user-link{
+    margin-left: 15px;
+    text-decoration: none;
+    color: #ffdcdc;
+    display: flex;
+    align-items: center;
+}
+
+.post__user-link:hover{
+    transition: ease-in .2s;
+    color: #cd0000;
+}
+
+.post__date{
+    margin-left: 15px;
+}
+
+.post__header{
+    display: flex;
+    align-items: center;
+}
+
+.post__tags{
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.post__tag-link{
+    margin-right: 9px;
+    padding: 8px 16px;
+    color: #ffdcdc;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    border-radius: 50px;
+    transition: all .4s ease-in-out;
+    background-size: 300% 100%;
+    background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a , #FBB03B);
+    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+}
+
+.post__tag-link:hover{
+    background-position: 100% 0;
+    transition: all .4s ease-in-out;
+}
+
+.description__container{
+    height: 185px;
+    padding: 0 17px;
+}
+
+.spacer{
+    margin-top: 5px;
+}
+
+.post__content{
+    text-decoration: none;
+    color: #ffdcdc;
+}
+
+.description__container .post__content{
+    width: 100%;
+}
+
+.post__footer{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}

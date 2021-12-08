@@ -1,0 +1,18 @@
+.NotificationBtn{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 0;
+    border: none;
+    background: none;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.NotificationBtn:hover{
+    transition: ease .3s;
+    opacity: 0.8;
+    cursor: pointer;
+    transform: scale(1.1);
+}
