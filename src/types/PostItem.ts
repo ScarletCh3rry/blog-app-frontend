@@ -8,11 +8,13 @@ export type Post = {
     quizzes_count: number
     views_count: number
     blog: Blog
+    id: number
 }
 
 export type Tag = {
     name: string
     slug: string
+    id: number
 }
 
 export type Blog = {
