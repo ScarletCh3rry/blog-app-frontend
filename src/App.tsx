@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './styles/App.css';
+import './styles/App.scss';
 import {Header} from "./components/Header/Header";
 import {AppContent} from "./components/AppContent";
 import {authStore} from "./store/AuthStore";

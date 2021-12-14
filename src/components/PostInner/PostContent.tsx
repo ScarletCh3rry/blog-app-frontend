@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 type Props = {
     title: string
@@ -8,7 +8,7 @@ type Props = {
 
 export const PostContent = (props:Props) => {
     return (
-        <Link className="post__content" to="">
+        <NavLink className="post__content" to="">
 
             <div className="description__container">
                 {/*title, description*/}
@@ -23,6 +23,6 @@ export const PostContent = (props:Props) => {
                     </p>
                 </div>
             </div>
-        </Link>
+        </NavLink>
     );
 };

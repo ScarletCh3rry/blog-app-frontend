@@ -1,13 +1,17 @@
 import React from 'react';
+import {postListStore, StorePost} from "../../store/BlogListStore";
+import {observer} from "mobx-react-lite";
 
 type Props = {
     likes_count: number
     comments_count: number
     quizzes_count: number
     views_count: number
+    post: StorePost
 }
 
-export const PostFooter = (props:Props) => {
+
+export const PostFooter = observer((props: Props) => {
     return (
         <div className="post__footer">
             {/*likes, views, comments, quizzes*/}
@@ -20,9 +24,15 @@ export const PostFooter = (props:Props) => {
             <div className="post__quizzes post__counter">
                 {props.quizzes_count}
             </div>
-            <div className="post__likes post__counter">
+            <div className="post__likes post__counter" style={{paddingLeft: '30px'}}>
                 {props.likes_count}
+                <button onClick={() => postListStore.toggleLike(props.post)}
+                        className={props.post.is_liked ? "liked" : ""}
+                        disabled={props.post.isLoading}  /* props.post.isLoading ? true : false */
+                >
+                    GIGALIKE
+                </button>
             </div>
         </div>
     );
-};
+})

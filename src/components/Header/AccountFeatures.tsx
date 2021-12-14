@@ -2,7 +2,7 @@ import React from 'react';
 import {motion} from 'framer-motion';
 import {authStore} from "../../store/AuthStore";
 import {observer} from "mobx-react-lite";
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 export const AccountFeatures = observer(() => {
     return (
@@ -17,10 +17,10 @@ export const AccountFeatures = observer(() => {
                     authStore.isAuth
                         ?
                         <div className="accFeatures__container">
-                            <NavLink to="http://localhost:3000"  className="accFeatures__link">
+                            <NavLink to="http://localhost:3000" className="accFeatures__link">
                                 Ваш профиль
                             </NavLink>
-                            <NavLink to="http://localhost:3000  "  className="accFeatures__link">
+                            <NavLink to="http://localhost:3000  " className="accFeatures__link">
                                 Настройки
                             </NavLink>
                             <NavLink to="http://localhost:3000" className="accFeatures__link" onClick={e => {

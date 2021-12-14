@@ -9,6 +9,7 @@ export type Post = {
     views_count: number
     blog: Blog
     id: number
+    is_liked: boolean
 }
 
 export type Tag = {
@@ -25,4 +26,9 @@ export type Blog = {
 export type User = {
     login: string
     avatar: string
+}
+
+export type PostRelations = {
+    "like": boolean,
+    "watched": boolean
 }
