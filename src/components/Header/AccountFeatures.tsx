@@ -17,8 +17,8 @@ export const AccountFeatures = observer(() => {
                     authStore.isAuth
                         ?
                         <div className="accFeatures__container">
-                            <NavLink to="http://localhost:3000" className="accFeatures__link">
-                                Ваш профиль
+                            <NavLink to={`blogs/${authStore.user?.name}`} className="accFeatures__link">
+                                Ваши блоги
                             </NavLink>
                             <NavLink to="http://localhost:3000  " className="accFeatures__link">
                                 Настройки
@@ -32,9 +32,12 @@ export const AccountFeatures = observer(() => {
                         </div>
                         :
                         <div className="accFeatures__container">
-                            <a href="http://localhost:3000/login" className="accFeatures__link">
+                            <NavLink to="/login" className="accFeatures__link">
                                 Войти
-                            </a>
+                            </NavLink>
+                            <NavLink to="/register" className="accFeatures__link">
+                                Зарегистрироваться
+                            </NavLink>
                         </div>
                 }
             </motion.div>

@@ -4,6 +4,8 @@ import {Header} from "./components/Header/Header";
 import {AppContent} from "./components/AppContent";
 import {authStore} from "./store/AuthStore";
 import {toJS} from "mobx";
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
     useEffect(() => {
@@ -12,8 +14,19 @@ const App = () => {
     },[])
     return (
         <div className="app">
-            <Header/>,
+            <Header/>
             <AppContent/>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                pauseOnHover
+                theme="light"
+            />
         </div>
     );
 };

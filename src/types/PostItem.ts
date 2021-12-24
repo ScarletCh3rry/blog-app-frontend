@@ -21,6 +21,12 @@ export type Tag = {
 export type Blog = {
     title: string
     owner: User
+    description: string
+    slug: string
+}
+
+export type FullBlog = Blog & {
+    posts: Post[]
 }
 
 export type User = {

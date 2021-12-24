@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import classes from './AccBarBtn.module.css'
-import profilePicture from '../../../resources/images/profilePicture.png';
 import {AccountFeatures} from "../../Header/AccountFeatures";
 import {AnimatePresence} from "framer-motion";
+import {authStore} from "../../../store/AuthStore";
+import {observer} from "mobx-react-lite";
 /*Dropdown account button*/
 
-export const AccBarBtn = () => {
-
+export const AccBarBtn = observer(() => {
     const [isOpen, setIsOpen] = useState(false)
 
     useEffect(() => {
@@ -33,13 +33,13 @@ export const AccBarBtn = () => {
                     width: '45px',
                     borderRadius: '50%'
                 }}
-                     src={profilePicture}
+                     src={authStore.user?.avatar}
                      alt=""
-                />{/*temporary fixed image*/}
+                />
             </button>
             <AnimatePresence>
                 {isOpen && <AccountFeatures/>}
             </AnimatePresence>
         </div>
     );
-};
+})

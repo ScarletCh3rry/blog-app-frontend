@@ -1,14 +1,25 @@
 import React from 'react';
 import {Route, Routes} from 'react-router-dom';
-import {PostList} from "./PostList";
 import {LoginPage} from "./Pages/LoginPage";
+import {FilteredPostList} from "./Pages/FilteredPostList";
+import {UserListPage} from "./Pages/UserListPage";
+import {RegisterPage} from "./Pages/RegisterPage";
+import {ProfilePage} from "./Pages/ProfilePage";
+import {BlogPage} from "./Pages/BlogPage";
+import {UserBlogs} from "./Pages/UserBlogs";
 
 export const AppContent = () => {
     return (
         <div className="app__content">
             <Routes>
-                <Route index element={<PostList/>}/>
+                <Route index element={<FilteredPostList/>}/>
                 <Route path="login" element={<LoginPage/>}/>
+                <Route path="users" element={<UserListPage/>}/>
+                <Route path="register" element={<RegisterPage/>}/>
+                <Route path="profile/:login" element={<ProfilePage/>}/>
+                <Route path="blogs/:login/:blogSlug" element={<BlogPage/>}/>
+                <Route path="blogs/:login/:blogSlug/:postSlug" element={<FilteredPostList/>}/>
+                <Route path="blogs/:login" element={<UserBlogs/>}/>
             </Routes>
         </div>
     );

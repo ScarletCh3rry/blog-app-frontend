@@ -23,7 +23,8 @@ export const PostHeader = (props:Props) => {
                 </div>
             </div>
             <div className="post__tags">
-                {props.tags.map(tag =>
+
+                {props.tags.slice(0,3).map(tag =>
                     <Link to="" className="post__tag-link" key={tag.id}>
                         {tag.name}
                     </Link>
