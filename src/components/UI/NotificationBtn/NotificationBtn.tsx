@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import classes from "../NotificationBtn/NotificationBtn.module.css";
-import notificationIcon from "../../../resources/images/notificationIcon.png";
 import {NotificationBar} from "../../Header/NotificationBar";
 import {AnimatePresence} from "framer-motion";
+import {MdNotificationsActive} from "react-icons/all";
 
 export const NotificationBtn = () => {
 
@@ -18,26 +18,13 @@ export const NotificationBtn = () => {
         return () => document.removeEventListener("click", handler)
     }, [])
 
-
-
     return (
-        <div
-            className="NtfBarOpener"
-        >
+        <div className="NtfBarOpener">
             <button
                 onClick={() => setIsOpen(prev => !prev)}
                 className={classes.NotificationBtn}
             >
-                <img style={{
-                    maxWidth: '40px',
-                    maxHeight: '40px',
-                    minWidth: '40px',
-                    minHeight: '40px',
-                    borderRadius: '50%'
-                }}
-                     src={notificationIcon}
-                     alt=""
-                />{/*fixed notification image*/}
+               <MdNotificationsActive/>
             </button>
             <AnimatePresence>
                 {isOpen && <NotificationBar/>}

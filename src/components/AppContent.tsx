@@ -7,6 +7,7 @@ import {RegisterPage} from "./Pages/RegisterPage";
 import {ProfilePage} from "./Pages/ProfilePage";
 import {BlogPage} from "./Pages/BlogPage";
 import {UserBlogs} from "./Pages/UserBlogs";
+import {CreatePostPage} from "./Pages/CreatePostPage";
 
 export const AppContent = () => {
     return (
@@ -20,6 +21,7 @@ export const AppContent = () => {
                 <Route path="blogs/:login/:blogSlug" element={<BlogPage/>}/>
                 <Route path="blogs/:login/:blogSlug/:postSlug" element={<FilteredPostList/>}/>
                 <Route path="blogs/:login" element={<UserBlogs/>}/>
+                <Route path="blogs/:blogId/create-post" element={<CreatePostPage/>}/>
             </Routes>
         </div>
     );

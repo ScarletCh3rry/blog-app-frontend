@@ -11,7 +11,7 @@ export const PostList = observer(() => {
     const [query, setQuery] = useSearchParams()
     const {login} = useParams()
     useEffect(() => {
-        postListStore.fetchPosts(query.getAll('tags'), login).then()
+        postListStore.fetchPosts(query.getAll('tags'), login, query.get('search')).then()
     }, [query]) //eslint-disable-line
     return (
         <div className="post__list">

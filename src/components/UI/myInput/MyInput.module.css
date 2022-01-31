@@ -2,10 +2,11 @@
     width: 300px;
     padding: 5px 15px;
     border: 1px solid #000;
+    background-color: #dbdbdb;
     border-radius: 10px;
 }
 textarea:focus, input:focus{
     outline: none;
-    transition: ease .5s;
-    border: 1px solid #cd0000;
+    transition: ease .3s;
+    border: 1px solid #f7186a;
 }

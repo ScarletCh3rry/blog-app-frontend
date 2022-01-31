@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {fullBlogStore} from "../../store/FullBlogStore";
-import {useParams} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 
 export const BlogPage = observer( () => {
@@ -25,9 +25,9 @@ export const BlogPage = observer( () => {
             <div>
                 {/*posts*/}
             </div>
-            <button>
+            <NavLink to={`/blogs/${fullBlogStore.blog?.id}/create-post/`}>
                 Создать пост
-            </button>
+            </NavLink>
         </div>
     );
 })

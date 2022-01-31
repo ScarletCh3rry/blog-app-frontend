@@ -1,5 +1,5 @@
 import {action, makeAutoObservable} from "mobx";
-import {Blog, Post, Tag} from "../types/PostItem";
+import {Post} from "../types/PostItem";
 import {postsAPI} from "../API/postsAPI";
 import {blogsAPI} from "../API/blogsAPI";
 import {BlogForm} from "../components/CreateBlogForm";
@@ -17,9 +17,9 @@ class PostList {
     error: string | null = null
 
 
-    fetchPosts(tags: string[], owner: string | undefined) {
+    fetchPosts(tags: string[], owner: string | undefined, search: string | null) {
         this.isLoading = true
-        return postsAPI.getAllPosts(tags, owner)
+        return postsAPI.getAllPosts(tags, owner, search)
             .then(
                 action(
                     'setPosts',
@@ -72,7 +72,7 @@ class PostList {
             )
     }
 
-    createPost (title: string, description: string, tags: Tag[], blog: Blog){
+    createPost (title: string, description: string, tags: number[], blog: number){
         this.isLoading = true
         return blogsAPI.createPost(title, description, tags, blog)
             .catch(

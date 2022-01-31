@@ -27,6 +27,7 @@ export type Blog = {
 
 export type FullBlog = Blog & {
     posts: Post[]
+    id: number
 }
 
 export type User = {

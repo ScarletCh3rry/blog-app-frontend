@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import classes from './MyInput.module.css'
 
-export const MyInput = (/*props*/) => {
+type Props = {
+    value: string,
+    onChange: (e:ChangeEvent<HTMLInputElement>) => void
+}
+
+export const MyInput = (props: Props) => {
     return (
-        <input className={classes.myInput} /*{...props}*//>
+        <input className={classes.myInput} {...props}/>
     );
 };

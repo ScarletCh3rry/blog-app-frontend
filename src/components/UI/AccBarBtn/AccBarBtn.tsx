@@ -31,7 +31,7 @@ export const AccBarBtn = observer(() => {
                 <img style={{
                     height: '45px',
                     width: '45px',
-                    borderRadius: '50%'
+                    borderRadius: '50%',
                 }}
                      src={authStore.user?.avatar}
                      alt=""

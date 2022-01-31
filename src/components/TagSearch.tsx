@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {MyInput} from "./UI/myInput/MyInput";
 import {useSearchParams} from "react-router-dom";
 import {tagListStore} from "../store/TagListStore";
 import { observer } from 'mobx-react-lite';
+import {toObj} from "../utils/toObj";
 
 
 export const TagSearch = observer(() => {
@@ -15,20 +15,20 @@ export const TagSearch = observer(() => {
     const queryTags = query.getAll('tags')
 
     const addTag = (tag: string) => {
-        setQuery({ tags: [...queryTags, tag] })
+        setQuery({ ...toObj(query), tags: [...queryTags, tag] })
     }
     const removeTag = (tag: string) => {
-        setQuery({ tags: queryTags.filter(t => t !== tag) })
+        setQuery({ ...toObj(query), tags: queryTags.filter(t => t !== tag) })
     }
 
 
     return (
         <div className="tag__search">
             <div className="tag__search-input">
-                <div>
+                <div className="tag__search-label">
                     Введите название Тега:
                 </div>
-                <MyInput/>
+                {/*<MyInput/>*/}
             </div>
             <div className="tag__search-list">
                 {

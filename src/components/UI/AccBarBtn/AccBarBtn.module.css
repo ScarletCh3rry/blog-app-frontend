@@ -6,8 +6,10 @@
     border: none;
     background: none;
     opacity: 1;
-    transform: scale(1);
+    transform: scale(0.9);
+
 }
+
 
 .AccBarBtn:hover{
     transition: ease .3s;
