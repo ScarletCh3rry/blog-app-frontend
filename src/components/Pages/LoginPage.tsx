@@ -1,6 +1,7 @@
 import React from 'react';
 import {authStore} from "../../store/AuthStore";
 import {useForm} from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 
 export type LoginForm = {
     login: string
@@ -12,8 +13,11 @@ export type LoginForm = {
 export const LoginPage = () => {
     const {register, handleSubmit, formState: {errors}} = useForm<LoginForm>()
 
+    const navigate = useNavigate()
+
     const onSubmit = (data: LoginForm) => {
         return authStore.login(data)
+            .then(() => navigate("/"))
     }
 
     return (

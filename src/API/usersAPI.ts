@@ -4,7 +4,7 @@ import {api} from "./axios-instance"
 
 
 class UsersAPI {
-    getAllUsers = () => api.get<Paginated<User[]>>('users/').then(res => res.data)
+    getAllUsers = () => api.get<Paginated<User>>('users/').then(res => res.data)
     getUser = (login: string) => api.get<User>(`user-profile/${login}/`).then(res => res.data)
 }
 

@@ -3,6 +3,7 @@ import {Post} from "../types/PostItem";
 import {postsAPI} from "../API/postsAPI";
 import {blogsAPI} from "../API/blogsAPI";
 import {BlogForm} from "../components/CreateBlogForm";
+import {getPagesCount} from "../utils/getPagesCount";
 
 export type StorePost = Post & { isLoading?: boolean }
 
@@ -15,15 +16,26 @@ class PostList {
     posts: StorePost[] = []
     isLoading = false
     error: string | null = null
-
+    totalPostsCount: number | null = null
+    currentPage: number = 1
+    get pagesCount() {
+        if (!this.totalPostsCount) return 0
+        return getPagesCount(this.totalPostsCount, 10)
+    }
+    setNextPage() {
+        this.currentPage ++
+    }
 
     fetchPosts(tags: string[], owner: string | undefined, search: string | null) {
         this.isLoading = true
-        return postsAPI.getAllPosts(tags, owner, search)
+        return postsAPI.getAllPosts(this.currentPage, tags, owner, search)
             .then(
                 action(
                     'setPosts',
-                    paginatedPosts => this.posts = paginatedPosts.results // TODO: add count
+                    paginatedPosts => {
+                        this.posts = [...this.posts, ...paginatedPosts.results]
+                        this.totalPostsCount = paginatedPosts.count
+                    } // TODO: add count
                 )
             )
             .finally(
