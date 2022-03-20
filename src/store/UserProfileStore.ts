@@ -1,12 +1,17 @@
 import {action, makeAutoObservable} from "mobx";
-import { usersAPI } from "../API/usersAPI";
+import {EditUserPayload, usersAPI} from "../API/usersAPI";
 import {User} from "../types/User";
+import {authStore} from "./AuthStore";
 
 
 class UserProfileStore {
 
     constructor() {
         makeAutoObservable(this, {}, {autoBind: true})
+    }
+
+    get isOwnProfile () {
+        return this.user?.login === authStore.user?.name
     }
 
     user: User | null = null
@@ -32,6 +37,19 @@ class UserProfileStore {
                 action(
                     'endProfileFetching',
                     () => this.isLoading = false
+                )
+            )
+    }
+
+    editUserProfile (login: string, payload: EditUserPayload) {
+        return usersAPI.editUser(login, payload)
+            .then(
+                action(
+                    'editUserProfile',
+                    (data) => {
+                        this.user!.login = data.login
+                        this.user!.email = data.email
+                    }
                 )
             )
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {postListStore, StorePost} from "../../store/BlogListStore";
+import {postListStore, StorePost} from "../../store/PostListStore";
 import {observer} from "mobx-react-lite";
 
 type Props = {

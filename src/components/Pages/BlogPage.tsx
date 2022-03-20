@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {fullBlogStore} from "../../store/FullBlogStore";
 import {NavLink, useParams} from "react-router-dom";
 import {observer} from "mobx-react-lite";
+import {authStore} from "../../store/AuthStore";
+import {FilteredPostList} from "./FilteredPostList";
 
 export const BlogPage = observer( () => {
     const {login, blogSlug} = useParams()
@@ -25,9 +27,13 @@ export const BlogPage = observer( () => {
             <div>
                 {/*posts*/}
             </div>
-            <NavLink to={`/blogs/${fullBlogStore.blog?.id}/create-post/`}>
-                Создать пост
-            </NavLink>
+            {
+                authStore.user?.name === fullBlogStore.blog?.owner.login &&
+                <NavLink to={`/blogs/${fullBlogStore.blog?.id}/create-post/`}>
+                    Создать пост
+                </NavLink>
+            }
+            <FilteredPostList/>
         </div>
     );
 })

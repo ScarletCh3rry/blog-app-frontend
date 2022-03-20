@@ -1,6 +1,7 @@
 import {api} from "./axios-instance";
 import {Blog, FullBlog, Post} from "../types/PostItem";
 import {BlogForm} from "../components/CreateBlogForm";
+import {Paginated} from "../types/Paginated";
 
 
 class BlogsAPI {
@@ -10,6 +11,7 @@ class BlogsAPI {
                   tags: number[],
                   blog: number) => api.post<Post>('blogs/create-post/', {title, tags, description, blog}).then(res => res.data)
     getFullBlog = (login: string, slug: string) => api.get<FullBlog>(`blogs/${login}/${slug}/`).then(res => res.data)
+    getUserBlogs = (login: string) => api.get<Paginated<Blog>>(`blogs/${login}/`).then(res => res.data)
 }
 
 export const blogsAPI = new BlogsAPI();

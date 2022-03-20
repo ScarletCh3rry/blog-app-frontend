@@ -1,7 +1,7 @@
 import React from 'react';
-import {postListStore} from "../store/BlogListStore";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
+import {blogListStore} from "../store/BlogListStore";
 
 export type BlogForm = {
     title: string
@@ -17,7 +17,7 @@ export const CreateBlogForm = ({closeModal}: Props) => {
 
     const navigate = useNavigate()
     const onSubmit = (data: BlogForm) => {
-        return postListStore.createBlog(data).then(({slug, owner}) => {
+        return blogListStore.createBlog(data).then(({slug, owner}) => {
             navigate(`/blogs/${owner.login}/${slug}`)
             closeModal()
         })

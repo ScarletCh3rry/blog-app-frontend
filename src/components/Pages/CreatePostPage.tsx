@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {tagListStore} from "../../store/TagListStore";
 import {observer} from "mobx-react-lite";
-import {postListStore} from "../../store/BlogListStore";
+import {postListStore} from "../../store/PostListStore";
 import { useParams } from 'react-router-dom';
 import {useForm} from "react-hook-form";
 

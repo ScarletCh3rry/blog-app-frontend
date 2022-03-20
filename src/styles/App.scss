@@ -416,3 +416,17 @@ a.active{
     justify-content: space-around;
     align-items: center;
 }
+
+.profile__login, .profile__date-joined, .profile__email, .profile__last-login, .profile__posts-count{
+    color:#fff;
+}
+
+.user__profile-link{
+    text-decoration: none;
+
+}
+
+.user-blogs-list{
+    display: flex;
+    flex-direction: column;
+}

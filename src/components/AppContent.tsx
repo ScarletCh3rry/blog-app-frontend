@@ -18,10 +18,11 @@ export const AppContent = () => {
                 <Route path="users" element={<UserListPage/>}/>
                 <Route path="register" element={<RegisterPage/>}/>
                 <Route path="profile/:login" element={<ProfilePage/>}/>
+                <Route path="blogs/:blogId/create-post" element={<CreatePostPage/>}/>
+                {/*TODO: refactor blogId to blogSlug*/}
+                <Route path="blogs/:login" element={<UserBlogs/>}/>
                 <Route path="blogs/:login/:blogSlug" element={<BlogPage/>}/>
                 <Route path="blogs/:login/:blogSlug/:postSlug" element={<FilteredPostList/>}/>
-                <Route path="blogs/:login" element={<UserBlogs/>}/>
-                <Route path="blogs/:blogId/create-post" element={<CreatePostPage/>}/>
             </Routes>
         </div>
     );
