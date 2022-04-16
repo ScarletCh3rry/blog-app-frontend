@@ -15,7 +15,7 @@ class UserProfileStore {
     }
 
     user: User | null = null
-    isLoading = false
+    isLoading = true
     error: string | null = null
 
     fetchUserProfile(login: string) {
@@ -49,6 +49,7 @@ class UserProfileStore {
                     (data) => {
                         this.user!.login = data.login
                         this.user!.email = data.email
+                        authStore.refresh()
                     }
                 )
             )

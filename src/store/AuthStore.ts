@@ -28,6 +28,7 @@ class AuthStore {
         makeAutoObservable(this, {}, {autoBind: true})
     }
 
+    refreshTimeout: number | null = null
     user: AuthenticatedUser | null = null
     isLoading = true
 
@@ -53,7 +54,8 @@ class AuthStore {
         }
         this.user = {id: user_id, name, avatar}
         this.isLoading = false
-        setTimeout(this.refresh, 1000 * 60 * 4)
+        clearTimeout(this.refreshTimeout as any)
+        this.refreshTimeout = setTimeout(this.refresh, 1000 * 60 * 4) as any
     }
 
     refresh = () => {

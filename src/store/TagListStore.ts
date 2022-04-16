@@ -13,9 +13,9 @@ class TagList{
     isLoading = false
     error: string | null = null
 
-    fetchTags() {
+    fetchTags(search: string = '') {
         this.isLoading = true
-        return tagsAPI.getAllTags()
+        return tagsAPI.getAllTags(search)
             .then(
                 action(
                     'setTags',

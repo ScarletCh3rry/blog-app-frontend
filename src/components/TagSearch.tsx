@@ -1,14 +1,21 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSearchParams} from "react-router-dom";
 import {tagListStore} from "../store/TagListStore";
 import { observer } from 'mobx-react-lite';
 import {toObj} from "../utils/toObj";
+import { MyInput } from './UI/myInput/MyInput';
 
 
 export const TagSearch = observer(() => {
 
+    const [tagSearchField, setTagSearchField] = useState('')
+
     useEffect(() => {
-        tagListStore.fetchTags().then()
+        tagListStore.fetchTags(tagSearchField).then()
+    }, [tagSearchField])
+
+    useEffect(() => {
+            tagListStore.fetchTags().then()
     }, [])
 
     const [query, setQuery] = useSearchParams()
@@ -28,7 +35,7 @@ export const TagSearch = observer(() => {
                 <div className="tag__search-label">
                     Введите название Тега:
                 </div>
-                {/*<MyInput/>*/}
+                <MyInput onChange={(e) => setTagSearchField(e.target.value)} value={tagSearchField}/>
             </div>
             <div className="tag__search-list">
                 {

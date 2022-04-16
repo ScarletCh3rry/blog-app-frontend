@@ -3,7 +3,7 @@ import {Tag} from "../types/PostItem";
 import { Paginated } from "../types/Paginated";
 
 class TagsAPI {
-    getAllTags = () => api.get<Paginated<Tag>>('blogs/tags/').then(res => res.data)
+    getAllTags = (search: string) => api.get<Paginated<Tag>>('blogs/tags/', {params: {search}}).then(res => res.data)
 }
 
 

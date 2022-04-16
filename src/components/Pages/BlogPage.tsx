@@ -29,7 +29,7 @@ export const BlogPage = observer( () => {
             </div>
             {
                 authStore.user?.name === fullBlogStore.blog?.owner.login &&
-                <NavLink to={`/blogs/${fullBlogStore.blog?.id}/create-post/`}>
+                <NavLink to={`/blogs/${fullBlogStore.blog?.slug}/create-post/`}>
                     Создать пост
                 </NavLink>
             }

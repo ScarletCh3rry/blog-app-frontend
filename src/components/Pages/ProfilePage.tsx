@@ -3,6 +3,7 @@ import {userProfileStore} from "../../store/UserProfileStore";
 import {observer} from "mobx-react-lite";
 import {NavLink, useParams} from "react-router-dom";
 import { EditProfileForm } from '../EditProfileForm';
+import {Loader} from "../UI/Loader/Loader";
 
 export const ProfilePage = observer(() => {
 
@@ -17,30 +18,30 @@ export const ProfilePage = observer(() => {
     return (
         <div className="user-profile-page">
             {
-                // TODO: make a loader
-            }
-            {
-                userProfileStore.user &&
+                userProfileStore.isLoading
+                    ?
+                    <Loader/>
+                    :
                 <>
                     <div className="user-profile">
 
                         <div className="profile__login">
-                            {userProfileStore.user.login}
+                            {userProfileStore.user!.login}
                         </div>
                         <div>
-                            <img src={userProfileStore.user.avatar} alt=""/>
+                            <img src={userProfileStore.user!.avatar} alt=""/>
                         </div>
                         <div className="profile__date-joined">
-                            {userProfileStore.user.date_joined}
+                            {userProfileStore.user!.date_joined}
                         </div>
                         <div className="profile__email">
-                            {userProfileStore.user.email}
+                            {userProfileStore.user!.email}
                         </div>
                         <div className="profile__last-login">
-                            {userProfileStore.user.last_login}
+                            {userProfileStore.user!.last_login}
                         </div >
                         <div className="profile__posts-count">
-                            {userProfileStore.user.posts_count}
+                            {userProfileStore.user!.posts_count}
                         </div>
                         <EditProfileForm/>
                         {
@@ -51,14 +52,10 @@ export const ProfilePage = observer(() => {
                             // TODO: display full user profile
                         }
                     </div>
-                    <NavLink className="user-profile__blog-list" to={`/blogs/${userProfileStore.user.login}`}>
+                    <NavLink className="user-profile__blog-list" to={`/blogs/${userProfileStore.user!.login}`}>
                         Блоги пользователя
                     </NavLink>
-
                 </>
-
-
-
             }
         </div>
     );

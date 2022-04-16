@@ -99,9 +99,9 @@ class PostList {
             )
     }
 
-    createPost (title: string, description: string, tags: number[], blog: number){
+    createPost (title: string, description: string, tags: number[], blogSlug: string){
         this.isCreatePostLoading = true
-        return blogsAPI.createPost(title, description, tags, blog)
+        return blogsAPI.createPost(title, description, tags, blogSlug)
             .catch(
                 action(
                     'creatingPostFailed',

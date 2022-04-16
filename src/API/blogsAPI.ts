@@ -9,7 +9,7 @@ class BlogsAPI {
     createPost = (title: string,
                   description: string,
                   tags: number[],
-                  blog: number) => api.post<Post>('blogs/create-post/', {title, tags, description, blog}).then(res => res.data)
+                  blogSlug: string) => api.post<Post>('blogs/create-post/', {title, tags, description, blog: blogSlug}).then(res => res.data)
     getFullBlog = (login: string, slug: string) => api.get<FullBlog>(`blogs/${login}/${slug}/`).then(res => res.data)
     getUserBlogs = (login: string) => api.get<Paginated<Blog>>(`blogs/${login}/`).then(res => res.data)
 }

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {tagListStore} from "../../store/TagListStore";
 import {observer} from "mobx-react-lite";
 import {postListStore} from "../../store/PostListStore";
-import { useParams } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {useForm} from "react-hook-form";
 
 export type CreatePostForm = {
@@ -17,7 +17,8 @@ export const CreatePostPage = observer(() => {
         tagListStore.fetchTags().then()
     }, [])
 
-    const {blogId} = useParams()
+    const {blogSlug} = useParams()
+    // const navigate = useNavigate()
 
     const [selectedTags, setSelectedTags] = useState<number[]>([])
 
@@ -30,7 +31,8 @@ export const CreatePostPage = observer(() => {
     }
 
     const onSubmit = (data: CreatePostForm) => {
-        return postListStore.createPost(data.title, data.description, selectedTags, +blogId!)
+        return postListStore.createPost(data.title, data.description, selectedTags, blogSlug!)
+            // .then(navigate) TODO: redirect to full post page
     }
 
     const {register, handleSubmit, formState: {errors}} = useForm<CreatePostForm>()
