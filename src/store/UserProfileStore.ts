@@ -1,8 +1,17 @@
 import {action, makeAutoObservable} from "mobx";
-import {EditUserPayload, usersAPI} from "../API/usersAPI";
-import {User} from "../types/User";
+import {usersAPI} from "../API/usersAPI";
 import {authStore} from "./AuthStore";
 
+export type UserProfile = {
+    login: string,
+    email: string,
+    last_login: string,
+    date_joined: string,
+    avatar: FileList,
+    posts_count: number,
+    id: number,
+    subscription_status: boolean
+}
 
 class UserProfileStore {
 
@@ -10,11 +19,11 @@ class UserProfileStore {
         makeAutoObservable(this, {}, {autoBind: true})
     }
 
-    get isOwnProfile () {
+    get isOwnProfile() {
         return this.user?.login === authStore.user?.name
     }
 
-    user: User | null = null
+    user: UserProfile | null = null
     isLoading = true
     error: string | null = null
 
@@ -41,7 +50,7 @@ class UserProfileStore {
             )
     }
 
-    editUserProfile (login: string, payload: EditUserPayload) {
+    editUserProfile(login: string, payload: FormData) {
         return usersAPI.editUser(login, payload)
             .then(
                 action(
@@ -49,6 +58,7 @@ class UserProfileStore {
                     (data) => {
                         this.user!.login = data.login
                         this.user!.email = data.email
+                        this.user!.avatar = data.avatar
                         authStore.refresh()
                     }
                 )

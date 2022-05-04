@@ -9,6 +9,7 @@
     border: none;
     background: none;
     opacity: 1;
+    filter: invert(100%);
 }
 
 .NtfSettingsBtn:hover{

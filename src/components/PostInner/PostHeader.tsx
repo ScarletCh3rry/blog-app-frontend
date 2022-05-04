@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {Blog, Tag} from "../../types/PostItem";
 
 type Props = {
@@ -14,12 +14,14 @@ export const PostHeader = (props:Props) => {
         <div className="post__header">
             {/*tags, user, date*/}
             <div className="post__user-info">
-                <Link className="post__user-link" to="">
+                <NavLink className="post__user-link" to={`/profile/${props.blog.owner.login}/`}>
                     <img className="post__user-pic" src={props.blog.owner.avatar} alt=""/>
                     {props.blog.owner.login}
-                </Link>
+                </NavLink>
                 <div className="post__date">
-                    <time dateTime="2021-12-06T19:55:28+03:00" className="post_datetime">{props.creation_date}</time>
+                    <p className="post__datetime-content">Опубликовано: &nbsp;
+                        <time dateTime="2021-12-06T19:55:28+03:00" className="post_datetime">{props.creation_date}</time>
+                    </p>
                 </div>
             </div>
             <div className="post__tags">

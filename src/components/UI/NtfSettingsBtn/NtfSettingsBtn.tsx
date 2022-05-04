@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from "../NtfSettingsBtn/NtfSettingsBtn.module.css";
-import settingsPicture from "../../../resources/images/settingsPicture.png";
+import settingsPicture from "../../../resources/images/settingsIcon.svg";
 
 export const NtfSettingsBtn = () => {
     return (

@@ -15,24 +15,36 @@ export const PostFooter = observer((props: Props) => {
     return (
         <div className="post__footer">
             {/*likes, views, comments, quizzes*/}
-            <div className="post__views post__counter">
-                {props.views_count}
-            </div>
-            <div className="post__comments post__counter">
-                {props.comments_count}
-            </div>
-            <div className="post__quizzes post__counter">
-                {props.quizzes_count}
-            </div>
-            <div className="post__likes post__counter" style={{paddingLeft: '30px'}}>
-                {props.likes_count}
+            <div className="post__likes post__counter">
                 <button onClick={() => postListStore.toggleLike(props.post)}
-                        className={props.post.is_liked ? "liked" : ""}
+                        className={props.post.is_liked ? "liked post-like-btn" : "post-like-btn"}
                         disabled={props.post.isLoading}  /* props.post.isLoading ? true : false */
                 >
-                    GIGALIKE
+
                 </button>
+                <p className="post__counter-text">
+                    {props.likes_count}
+                </p>
             </div>
+            <div className="post__views post__counter">
+                <div className="post-view-img"/>
+                <p className="post__counter-text">
+                    {props.views_count}
+                </p>
+            </div>
+            <div className="post__comments post__counter">
+
+                <p className="post__counter-text">
+                    {props.comments_count}
+                </p>
+            </div>
+            <div className="post__quizzes post__counter">
+
+                <p className="post__counter-text">
+                    {props.quizzes_count}
+                </p>
+            </div>
+
         </div>
     );
 })

@@ -36,6 +36,10 @@ export type User = {
 }
 
 export type PostRelations = {
-    "like": boolean,
-    "watched": boolean
+    like: boolean,
+    watched: boolean
+}
+
+export type SubscriptionRelations = {
+    subscription_status: boolean,
 }

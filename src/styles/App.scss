@@ -212,6 +212,7 @@ a.active{
     right: 30px;
     border: 1px solid $textColor;
     border-radius: 10px;
+    background: $appMainColor;
 }
 
 .NtfSettings__container{
@@ -239,9 +240,18 @@ a.active{
     outline: none;
 }
 
+.notification__text{
+    color: $textColor;
+}
+
 .notification__link:hover{
     transition: ease .5s;
     background-color: $textColor;
+}
+
+.notification__link:hover .notification__text{
+    transition: ease .5s;
+    color: $appMainColor;
 }
 
 .ntfImg__container{
@@ -256,6 +266,7 @@ a.active{
     width: 200px;
     height: 120px;
     display: flex;
+    background-color: $appMainColor;
     flex-direction: column;
     border: 1px solid $textColor;
     border-radius: 10px;
@@ -270,13 +281,14 @@ a.active{
     align-items: center;
     padding-left: 5px;
     text-decoration: none;
-    color: $textColor;
+    color: $textColor !important;
     border-radius: 10px;
 }
 
 .accFeatures__link:hover{
     transition: ease .5s;
     background-color: $textColor;
+    color: $appMainColor !important;
 }
 
 .post__list-page{
@@ -287,9 +299,9 @@ a.active{
 
 .post{
     width: 100%;
-    height: 280px;
-    border: 1px solid $postBorder;
-    border-radius: 7px;
+    //height: 280px;
+    border: 1px solid $textColor;
+    border-radius: 12px;
     background-color: $appSecondaryColor
 }
 
@@ -299,6 +311,10 @@ a.active{
 
 .post__list{
     width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .post__user-info{
@@ -381,7 +397,7 @@ a.active{
     white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-height: 160px;
+    max-height: 145px;
     color: $textColor;
     transition: ease-in-out .3s;
 }
@@ -393,6 +409,7 @@ a.active{
 
 .description__container:hover .post__title{
     color: $highlighted;
+    margin-left: 20px;
 }
 
 .description__container:hover .post__description{
@@ -408,6 +425,8 @@ a.active{
     height: 40px;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 10px;
 }
 
 .create__blog-form{
@@ -429,4 +448,108 @@ a.active{
 .user-blogs-list{
     display: flex;
     flex-direction: column;
+}
+
+.tag__search-label{
+    padding-bottom: 5px;
+    color: $textColor;
+}
+
+.tag__search-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tag__search-button{
+    width: 100%;
+    margin-top: 17px;
+    border-radius: 10px;
+    padding: 7px 0;
+    cursor: pointer;
+    color: $textColor;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    transition: all .4s ease-in-out;
+    background-size: 300% 100%;
+    background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a , #FBB03B);
+    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+}
+
+.tag__search-button:hover{
+    background-position: 100% 0;
+    transition: all .4s ease-in-out;
+}
+
+.loader {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 30px 0;
+    border: 3px dashed darkred;
+    animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+
+    to {
+        transform: rotate(360deg) scale(1.5);
+    }
+}
+
+.observer-element{
+    background: transparent;
+}
+
+.post__datetime-content{
+    color: $highlighted;
+    font-size: 17px;
+}
+
+.post__user-pic{
+    margin-right: 9px;
+}
+
+.post-like-btn{
+    background-image: url("../resources/images/likeIcon.svg");
+    width: 30px;
+    height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+}
+
+.post-like-btn:hover{
+    transition: .5s ease-in-out;
+    filter: invert(100%);
+}
+
+.post__counter {
+    width: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.post__counter-text{
+    font-style: italic;
+    color: $textColor;
+}
+
+.post-view-img{
+    background-image: url("../resources/images/viewIcon.svg");
+    width: 30px;
+    height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-repeat: no-repeat;
 }

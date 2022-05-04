@@ -13,8 +13,8 @@ export const NotificationItem = () => {
                     />
                 </div>
                 <div>
-                    <h3 style={{color: "#000"}}>Заголовок</h3>
-                    <p style={{color: "#000"}}>Описание поста. Описание поста. Описание поста. </p>
+                    <h3 className="notification__text">Заголовок</h3>
+                    <p className="notification__text">Описание поста. Описание поста. Описание поста. </p>
                 </div>
             </NavLink>
         </div>

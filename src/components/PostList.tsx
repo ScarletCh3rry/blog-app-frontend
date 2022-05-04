@@ -23,7 +23,7 @@ export const PostList = observer((props: Props) => {
                     :
                     <>
                         {props.postList.map(post => <PostItem key={post.id} post={post}/>)}
-                        <div ref={props.observerElement} style={{height: 1, width: 10}}/>
+                        <div className="observer-element" ref={props.observerElement} style={{height: 1, width: 10}}/>
                         {
                             props.isSubloading &&
                                 <Loader/>

@@ -6,7 +6,7 @@ export const Logo = () => {
     return (
         <NavLink className="main__logo" to="">
             <img className="logo__pic" src={logoimg} alt=""/>
-            CherryQuiz
+            CherryBlog
         </NavLink>
     );
 };

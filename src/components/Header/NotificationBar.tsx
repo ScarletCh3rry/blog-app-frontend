@@ -11,7 +11,7 @@ export const NotificationBar = () => {
             exit={{opacity: 0}}
         >
             <div className="NtfSettings__container">
-                <h3 style={{marginLeft: '12px'}}>Ваши уведомления</h3>
+                <h3 style={{marginLeft: '12px', color: "#ffeceb"}}>Ваши уведомления</h3>
                 <NtfSettingsBtn/>
             </div>
             <div className="notifications__container">

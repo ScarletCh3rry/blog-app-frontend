@@ -8,6 +8,7 @@ import {ProfilePage} from "./Pages/ProfilePage";
 import {BlogPage} from "./Pages/BlogPage";
 import {UserBlogs} from "./Pages/UserBlogs";
 import {CreatePostPage} from "./Pages/CreatePostPage";
+import {SubscriptionsPage} from "./Pages/SubscriptionsPage";
 
 export const AppContent = () => {
     return (
@@ -22,6 +23,7 @@ export const AppContent = () => {
                 <Route path="blogs/:login" element={<UserBlogs/>}/>
                 <Route path="blogs/:login/:blogSlug" element={<BlogPage/>}/>
                 <Route path="blogs/:login/:blogSlug/:postSlug" element={<FilteredPostList/>}/>
+                <Route path=":login/subscriptions" element={<SubscriptionsPage/>}/>
             </Routes>
         </div>
     );
