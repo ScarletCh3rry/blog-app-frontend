@@ -25,12 +25,25 @@ export const ProfilePage = observer(() => {
                     :
                 <>
                     <div className="user-profile">
+                        <div className="user-changes__container">
+                            <img className="user-profile-avatar" src={userProfileStore.user!.avatar as any} alt=""/>
+                            <div className="profile__login">
+                                {userProfileStore.user!.login}
+                            </div>
+                            {
+                                authStore.user?.name! !== login!
+                                &&
+                                <button className="profile-subscribe-btn carousel-btn" onClick={() => {postListStore.setSubscription(login!, authStore.user?.name!, !subscription_status!)}}>
+                                    <span>
+                                        Подписаться
+                                    </span>
+                                </button>
 
-                        <div className="profile__login">
-                            {userProfileStore.user!.login}
-                        </div>
-                        <div>
-                            <img src={userProfileStore.user!.avatar as any} alt=""/>
+                            }
+                            {
+                                userProfileStore.isOwnProfile &&
+                                <EditProfileForm/>
+                            }
                         </div>
                         <div className="profile__date-joined">
                             {userProfileStore.user!.date_joined}
@@ -41,28 +54,14 @@ export const ProfilePage = observer(() => {
                         <div className="profile__last-login">
                             {userProfileStore.user!.last_login}
                         </div >
-                        {
-                            authStore.user?.name! !== login!
-                                &&
-                            <button onClick={() => {postListStore.setSubscription(login!, authStore.user?.name!, !subscription_status!)}}>
-                            Subscribe
-                            </button>
-                        }
+
                         <div className="profile__posts-count">
                             {userProfileStore.user!.posts_count}
                         </div>
-                        <EditProfileForm/>
-                        {
-                            // userProfileStore.isOwnProfile &&
-                            // <EditProfileForm/>
-                        }
-                        {
-                            // TODO: display full user profile
-                        }
+                        <NavLink className="user-profile__blog-list" to={`/blogs/${userProfileStore.user!.login}`}>
+                            Блоги пользователя
+                        </NavLink>
                     </div>
-                    <NavLink className="user-profile__blog-list" to={`/blogs/${userProfileStore.user!.login}`}>
-                        Блоги пользователя
-                    </NavLink>
                 </>
             }
         </div>

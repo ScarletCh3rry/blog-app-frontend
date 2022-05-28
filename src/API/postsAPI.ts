@@ -4,7 +4,7 @@ import {Paginated} from "../types/Paginated";
 import {createQuery} from "../utils/createQuery";
 
 class PostsAPI {
-    getAllPosts = (page: number, tags: string[], owner: string | undefined, search: string | null, blogSlug: string | undefined) => api.get<Paginated<Post>>(`blogs/posts/?${createQuery({tags, owner, search, page})
+    getAllPosts = (page: number, tags: string[], owner: string | undefined, search: string | null, blogSlug: string | undefined) => api.get<Paginated<Post>>(`blogs/posts/?${createQuery({tags, owner, search, page, blogSlug})
         //createSearchParams(owner ? {tags, owner} : search ? {tags, search} : {tags})
         }`).then(res => res.data)
 
@@ -19,6 +19,14 @@ class PostsAPI {
         return api.put<SubscriptionRelations>(`blogs/${user_you_subscribed_to}/subscription-update/`, {subscription_status}).then(res => res.data)
     }
 
+    getPost = (login: string, blogSlug:string, postSlug:string) => {
+        return api.get<Post>(`blogs/${login}/${blogSlug}/${postSlug}/`)
+            .then(res => res.data)
+    }
+
+    deletePost = (login: string, blogSlug:string, postSlug:string) => {
+        return api.delete(`blogs/${login}/${blogSlug}/${postSlug}/delete-post/`)
+    }
 }
 
 

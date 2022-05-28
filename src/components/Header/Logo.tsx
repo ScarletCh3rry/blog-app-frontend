@@ -1,11 +1,11 @@
 import React from 'react';
+import { GiCherry } from 'react-icons/all';
 import { NavLink } from 'react-router-dom';
-import logoimg from '../../resources/images/logo.png';
 
 export const Logo = () => {
     return (
         <NavLink className="main__logo" to="">
-            <img className="logo__pic" src={logoimg} alt=""/>
+            <GiCherry className="main__logo-pic"/>
             CherryBlog
         </NavLink>
     );

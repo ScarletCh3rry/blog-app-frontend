@@ -4,11 +4,18 @@ import {observer} from "mobx-react-lite";
 import {postListStore} from "../../store/PostListStore";
 import {useParams} from 'react-router-dom';
 import {useForm} from "react-hook-form";
+import { Editor } from "react-draft-wysiwyg";
+import {convertToRaw, EditorState} from "draft-js";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+// @ts-ignore
+import draftToHtml from 'draftjs-to-html';
+
 
 export type CreatePostForm = {
     title: string
-    description: string
+    // description: string
 }
+
 
 
 export const CreatePostPage = observer(() => {
@@ -31,11 +38,15 @@ export const CreatePostPage = observer(() => {
     }
 
     const onSubmit = (data: CreatePostForm) => {
-        return postListStore.createPost(data.title, data.description, selectedTags, blogSlug!)
+        return postListStore.createPost(data.title, draftToHtml(convertToRaw(editorState.getCurrentContent())), selectedTags, blogSlug!)
+
             // .then(navigate) TODO: redirect to full post page
     }
 
     const {register, handleSubmit, formState: {errors}} = useForm<CreatePostForm>()
+
+    const [editorState, onEditorStateChange] = useState(EditorState.createEmpty())
+
 
     return (
         <div className="create__post">
@@ -45,11 +56,18 @@ export const CreatePostPage = observer(() => {
                            className="form__field-input"/>
                     {errors.title && <div className="create__error-message wrong__title">{errors.title.message}</div>}
                 </div>
-                <div className="create__post__description">
-                    <textarea {...register('description', {required: 'Введено некорректное описание'})}
-                           className="form__field-input"/>
-                    {errors.description && <div className="create__error-message wrong__description">{errors.description.message}</div>}
-                </div>
+                {/*<div className="create__post__description">*/}
+                {/*    <textarea {...register('description', {required: 'Введено некорректное описание'})}*/}
+                {/*           className="form__field-input"/>*/}
+                {/*    {errors.description && <div className="create__error-message wrong__description">{errors.description.message}</div>}*/}
+                {/*</div>*/}
+                <Editor
+                    editorState={editorState}
+                    toolbarClassName="editorToolbar"
+                    wrapperClassName="editorWrapper"
+                    editorClassName="editor"
+                    onEditorStateChange={onEditorStateChange}
+                />;
                 <div className="create__post__tags">
                     {
                         tagListStore.tags.map(
@@ -73,6 +91,9 @@ export const CreatePostPage = observer(() => {
                     Создать пост :)
                 </button>
             </form>
+
         </div>
     );
 })
+
+

@@ -10,15 +10,15 @@ export const NavBar = observer(() => {
     const user_me = authStore.user?.name
     return (
         <div className="navbar__container">
-            <NavLink className="nav__link" to="popular">
+            <NavLink className="nav__link" to="/popular">
                 <FiTrendingUp/>
                 Популярное
             </NavLink>
-            <NavLink className="nav__link" to={`${user_me}/subscriptions`}>
+            <NavLink className="nav__link" to={`/${user_me}/subscriptions`}>
                 <GiCheckMark/>
                 Подписки
             </NavLink>
-            <NavLink className="nav__link" to="users">
+            <NavLink className="nav__link" to="/users">
                 <FaUserAlt/>
                 Пользователи
             </NavLink>

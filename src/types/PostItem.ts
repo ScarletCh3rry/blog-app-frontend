@@ -10,6 +10,7 @@ export type Post = {
     blog: Blog
     id: number
     is_liked: boolean
+    slug: string
 }
 
 export type Tag = {

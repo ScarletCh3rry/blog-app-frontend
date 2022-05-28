@@ -13,9 +13,9 @@ class UserList {
     isLoading = false
     error: string | null = null
 
-    fetchUsers() {
+    fetchUsers(login: string) {
         this.isLoading = true
-        return usersAPI.getAllUsers()
+        return usersAPI.getAllUsers(login)
             .then(
                 action(
                     'setUsers',

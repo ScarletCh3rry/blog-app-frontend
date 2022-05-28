@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     outline: none;
+    text-decoration: none;
 }
 
 a.active{
@@ -32,6 +33,12 @@ a.active{
     align-items: center;
     justify-content: space-around;
     background-color: #333336 !important;
+}
+
+.main__logo-pic{
+    color: $highlighted;
+    width: 40px;
+    height: 40px;
 }
 
 .main__logo{
@@ -88,7 +95,7 @@ a.active{
     object-fit: cover;
 }
 
-.create__blog-btn {
+.carousel-btn{
     border: none;
     background: #81013d;
     color: #f1f1f1;
@@ -107,12 +114,12 @@ a.active{
     border-radius: 8px;
 }
 
-.create__blog-btn:active {
+.carousel-btn:active {
     background: #99044a;
     top: 2px;
 }
 
-.create__blog-btn span {
+.carousel-btn span {
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -124,7 +131,7 @@ a.active{
     backface-visibility: hidden;
 }
 
-.create__blog-btn:after {
+.carousel-btn:after {
     content: 'Create blog';
     position: absolute;
     z-index: -1;
@@ -135,7 +142,7 @@ a.active{
 
 
 .create__blog-btn:before {
-    content: 'Create blog';
+    content: 'Создать блог';
     position: absolute;
     height: 100%;
     width: 100%;
@@ -145,23 +152,34 @@ a.active{
     transition: all 0.3s;
 }
 
-.create__blog-btn:active:before {
+.profile-subscribe-btn:before{
+    content: 'Подписаться';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    line-height: 2.5;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.carousel-btn:active:before {
     color: #fff;
 }
 
-.create__blog-btn:hover span {
+.carousel-btn:hover span {
     -webkit-transform: translateY(300%);
     -moz-transform: translateY(300%);
     -ms-transform: translateY(300%);
     transform: translateY(300%);
 }
 
-.create__blog-btn:before {
+.carousel-btn:before {
     left: 0;
     top: -100%;
 }
 
-.create__blog-btn:hover:before {
+.carousel-btn:hover:before {
     top: 0;
 }
 
@@ -370,8 +388,7 @@ a.active{
     border-radius: 50px;
     transition: all .4s ease-in-out;
     background-size: 300% 100%;
-    background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a , #FBB03B);
-    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+    background-image: linear-gradient(to right, #333336 0%, #e3516f 47%, #3c3c41 120%);
 }
 
 .post__tag-link:hover{
@@ -440,10 +457,6 @@ a.active{
     color:#fff;
 }
 
-.user__profile-link{
-    text-decoration: none;
-
-}
 
 .user-blogs-list{
     display: flex;
@@ -473,8 +486,7 @@ a.active{
     border: none;
     transition: all .4s ease-in-out;
     background-size: 300% 100%;
-    background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a , #FBB03B);
-    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+    background-image: linear-gradient(to right, #333336 0%, #e3516f 47%, #3c3c41 120%);
 }
 
 .tag__search-button:hover{
@@ -487,7 +499,7 @@ a.active{
     height: 100px;
     border-radius: 50%;
     margin: 30px 0;
-    border: 3px dashed darkred;
+    border: 3px dashed $highlighted;
     animation: rotate 1s infinite linear;
 }
 
@@ -506,7 +518,7 @@ a.active{
 }
 
 .post__datetime-content{
-    color: $highlighted;
+    color: $postDatetime;
     font-size: 17px;
 }
 
@@ -523,11 +535,13 @@ a.active{
     border: none;
     border-radius: 50%;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .post-like-btn:hover{
     transition: .5s ease-in-out;
-    filter: invert(100%);
+    filter: hue-rotate(7deg) brightness(120%) sepia(20%);
+
 }
 
 .post__counter {
@@ -552,4 +566,137 @@ a.active{
     border: none;
     border-radius: 50%;
     background-repeat: no-repeat;
+}
+
+.user__list-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.profile-link__container{
+    height: 110px;
+    width: 1200px;
+    max-width: calc(100% - 50px);
+    margin-top: 25px;
+    border: 2px solid #b5b5b5;
+    border-radius: 15px;
+}
+
+.profile__avatar{
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+.profile-info{
+    color: $textColor;
+}
+
+.profile-link__container:hover{
+    transition: .3s ease-in-out;
+    border: 2px solid $highlighted;
+}
+
+.profile-link__container:hover .profile-info{
+    transition: .3s ease-in-out;
+    color: $highlighted;
+}
+
+.user__profile-link{
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.rdw-editor-wrapper{
+    width: 1200px;
+    background-color: $appSecondaryColor;
+}
+
+.rdw-editor-toolbar{
+    background-color: $appSecondaryColor !important;
+    border: none !important;
+}
+
+.rdw-option-wrapper{
+    background: $editorMainColor !important;
+    border: 1px solid $editorMainColor !important;
+}
+.rdw-option-wrapper:hover{
+    box-shadow: 1px 1px 0 $editorSecondaryColor !important;
+}
+.rdw-dropdown-wrapper{
+    border: 1px solid $editorMainColor !important;
+    background: $editorMainColor !important;
+}
+.rdw-dropdown-wrapper:hover{
+    box-shadow: 1px 1px 0 $editorSecondaryColor !important;
+}
+
+.rdw-dropdown-optionwrapper{
+    background: $editorMainColor !important;
+    border: 1px solid $editorMainColor !important;
+}
+
+.rdw-dropdown-optionwrapper:hover{
+    box-shadow: 1px 1px 0 $editorSecondaryColor !important;
+}
+
+.rdw-dropdownoption-highlighted{
+    background: $editorSecondaryColor !important;
+}
+
+.user-profile-page{
+    display: flex;
+    justify-content: center;
+}
+
+.user-changes__container{
+    padding-top: 25px;
+    height: 400px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.user-profile-avatar{
+    max-width: 400px;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.profile-change-btn{
+    background: none;
+    border: none;
+}
+
+.pencil-icon{
+    color: $navColor;
+}
+
+.pencil-icon:hover{
+    transition: .3s ease-in-out;
+    color: $highlighted;
+}
+
+.profile__login{
+    color: $textColor;
+}
+
+.editProfileForm{
+    width: 400px;
+}
+
+.edit-form__element{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -17,7 +17,7 @@ export const AccountFeatures = observer(() => {
                     authStore.isAuth
                         ?
                         <div className="accFeatures__container">
-                            <NavLink to={`blogs/${authStore.user?.name}`} className="accFeatures__link">
+                            <NavLink to={`/blogs/${authStore.user?.name}`} className="accFeatures__link">
                                 Ваши блоги
                             </NavLink>
                             <NavLink to="/" className="accFeatures__link">

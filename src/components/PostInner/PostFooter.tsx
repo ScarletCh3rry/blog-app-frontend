@@ -1,7 +1,6 @@
 import React from 'react';
 import {postListStore, StorePost} from "../../store/PostListStore";
 import {observer} from "mobx-react-lite";
-
 type Props = {
     likes_count: number
     comments_count: number
@@ -33,7 +32,6 @@ export const PostFooter = observer((props: Props) => {
                 </p>
             </div>
             <div className="post__comments post__counter">
-
                 <p className="post__counter-text">
                     {props.comments_count}
                 </p>
