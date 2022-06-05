@@ -33,6 +33,10 @@ class FullBlogStore {
                 )
             )
     }
+
+    deleteBlog(login: string, blogSlug: string) {
+        return blogsAPI.deleteBlog(login, blogSlug)
+    }
 }
 
 export const fullBlogStore = new FullBlogStore()

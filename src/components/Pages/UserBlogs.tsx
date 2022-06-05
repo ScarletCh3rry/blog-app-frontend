@@ -14,8 +14,17 @@ export const UserBlogs = observer(() => {
             {
                 blogListStore.blogs.map(blog => <NavLink to={`/blogs/${blog.owner.login}/${blog.slug}`}
                                                          key={blog.slug}
-                                                         style={{color: '#fff', textDecoration: 'none'}}>
-                    {blog.owner.login} {blog.owner.avatar} {blog.description} {blog.slug} {blog.title}</NavLink>)
+                                                         className="blog-list-item">
+                    <div className="blog-list-item__inner">
+                        Создатель: {blog.owner.login}
+                    </div>
+                    <div className="blog-list-item__inner">
+                        Название: {blog.title}
+                    </div>
+                    <div className="blog-list-item__inner">
+                        Описание: {blog.description}
+                    </div>
+                </NavLink>)
 
             }
             {/*<FilteredPostList/>*/}

@@ -13,6 +13,12 @@ export type Post = {
     slug: string
 }
 
+export type Comment = {
+    text: string
+    id: number
+    owner: User
+}
+
 export type Tag = {
     name: string
     slug: string

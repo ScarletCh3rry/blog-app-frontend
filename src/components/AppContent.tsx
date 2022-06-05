@@ -10,6 +10,7 @@ import {UserBlogs} from "./Pages/UserBlogs";
 import {CreatePostPage} from "./Pages/CreatePostPage";
 import {SubscriptionsPage} from "./Pages/SubscriptionsPage";
 import { FullPostView } from './Pages/FullPostView';
+import {QuizPage} from "./Pages/QuizPage";
 
 export const AppContent = () => {
     return (
@@ -24,6 +25,7 @@ export const AppContent = () => {
                 <Route path="blogs/:login" element={<UserBlogs/>}/>
                 <Route path="blogs/:login/:blogSlug" element={<BlogPage/>}/>
                 <Route path="blogs/:login/:blogSlug/:postSlug" element={<FullPostView/>}/>
+                <Route path="blogs/:login/:blogSlug/:postSlug/:quizSlug" element={<QuizPage/>}/>
                 <Route path=":login/subscriptions" element={<SubscriptionsPage/>}/>
                 {/*<Route path="posts/:postId" element={<FullPostView/>}/>*/}
             </Routes>

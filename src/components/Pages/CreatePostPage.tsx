@@ -2,13 +2,14 @@ import React, {useEffect, useState} from 'react';
 import {tagListStore} from "../../store/TagListStore";
 import {observer} from "mobx-react-lite";
 import {postListStore} from "../../store/PostListStore";
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {useForm} from "react-hook-form";
 import { Editor } from "react-draft-wysiwyg";
 import {convertToRaw, EditorState} from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 // @ts-ignore
 import draftToHtml from 'draftjs-to-html';
+import {fullBlogStore} from "../../store/FullBlogStore";
 
 
 export type CreatePostForm = {
@@ -37,10 +38,12 @@ export const CreatePostPage = observer(() => {
         setSelectedTags(selectedTags.filter((tag) => tag !== id))
     }
 
+    const navigate = useNavigate()
+
     const onSubmit = (data: CreatePostForm) => {
         return postListStore.createPost(data.title, draftToHtml(convertToRaw(editorState.getCurrentContent())), selectedTags, blogSlug!)
+            .then((createdPost) => navigate(`/blogs/${fullBlogStore.blog?.owner.login}/${fullBlogStore.blog?.slug}/${createdPost!.slug}`))
 
-            // .then(navigate) TODO: redirect to full post page
     }
 
     const {register, handleSubmit, formState: {errors}} = useForm<CreatePostForm>()
@@ -88,7 +91,7 @@ export const CreatePostPage = observer(() => {
                     }
                 </div>
                 <button>
-                    Создать пост :)
+                    Создать пост
                 </button>
             </form>
 

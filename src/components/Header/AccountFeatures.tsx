@@ -2,9 +2,12 @@ import React from 'react';
 import {motion} from 'framer-motion';
 import {authStore} from "../../store/AuthStore";
 import {observer} from "mobx-react-lite";
-import {NavLink} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 
 export const AccountFeatures = observer(() => {
+
+    const navigate = useNavigate()
+
     return (
         <div>
             <motion.div
@@ -20,11 +23,12 @@ export const AccountFeatures = observer(() => {
                             <NavLink to={`/blogs/${authStore.user?.name}`} className="accFeatures__link">
                                 Ваши блоги
                             </NavLink>
-                            <NavLink to="/" className="accFeatures__link">
-                                Настройки
+                            <NavLink to={`/profile/${authStore.user?.name}`} className="accFeatures__link">
+                                Ваш профиль
                             </NavLink>
                             <NavLink to="/" className="accFeatures__link" onClick={e => {
                                 authStore.logout()
+                                navigate('/login')
                                 e.preventDefault()
                             }}>
                                 Выйти

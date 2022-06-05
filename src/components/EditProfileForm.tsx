@@ -51,6 +51,9 @@ export const EditProfileForm = observer(() => {
         setValue('login.value', userProfileStore.user!.login)
         setValue('email.value', userProfileStore.user!.email)
         setValue('avatar.value', userProfileStore.user!.avatar)
+        login.isChangeable = false
+        email.isChangeable = false
+        avatar.isChangeable = false
     }
     return (
         <form className="editProfileForm" onSubmit={handleSubmit(onSubmit)}>
@@ -58,7 +61,7 @@ export const EditProfileForm = observer(() => {
                 {
                     login.isChangeable
                         ?
-                        <input {...register("login.value", {required: "You need to type your new login"})} />
+                        <input className="edit-form__field" {...register("login.value", {required: "You need to type your new login"})} />
                         :
                         <span className="profile-info">
                                 {login.value}
@@ -78,7 +81,7 @@ export const EditProfileForm = observer(() => {
                 {
                     email.isChangeable
                         ?
-                        <input {...register("email.value", {required: "You need to type your new email"})} />
+                        <input className="edit-form__field" {...register("email.value", {required: "You need to type your new email"})} />
                         :
                         <span className="profile-info">
                                 {email.value}
@@ -98,10 +101,13 @@ export const EditProfileForm = observer(() => {
                 {
                     avatar.isChangeable
                         ?
-                        <input type="file" {...register("avatar.value", {required: "You need to set your new avatar"})} />
+                        <>
+                            <label className="custom-file-upload" htmlFor="file-upload"><span id="fileUploadLabel">Выберите файл</span></label>
+                            <input  id="file-upload" className="file-upload" type="file" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" {...register("avatar.value", {required: "You need to set your new avatar"})} />
+                        </>
                         :
                         <span className="profile-info">
-                                {avatar.value}
+                                Выбран файл: {avatar.value}
                         </span>
                 }
                 <button type="button" className="profile-change-btn" onClick={() => {
@@ -116,12 +122,12 @@ export const EditProfileForm = observer(() => {
             </div>
             {
                 (login.isChangeable || email.isChangeable || avatar.isChangeable) &&
-                <div>
-                    <button type="submit" className="edit-profile-btn edit-profile-submit">
-                        Save changes
+                <div className="edit-profile-btn__container">
+                    <button type="submit" className="edit-profile-btn" id="edit-profile-submit">
+                        Сохранить изменения
                     </button>
-                    <button type="button" onClick={() => cancelChanges()} className="edit-profile-btn edit-profile-cancel">
-                        Cancel changes
+                    <button type="button" onClick={() => cancelChanges()} className="edit-profile-btn" id="edit-profile-cancel">
+                        Отменить изменения
                     </button>
                 </div>
             }

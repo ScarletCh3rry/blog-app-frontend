@@ -13,7 +13,7 @@ export const Modal: FC<Props> = ({active, setActive, children}) => {
              onClick={() => setActive(false)}>
             <div className={active ? `${styles.content} ${styles.active}`: `${styles.content}`}
                  onClick={e => e.stopPropagation()}>
-                <button className={styles.close} onClick={() => setActive(false)}>X</button>
+                {/*<button className={styles.close} onClick={() => setActive(false)}>X</button>*/}
                 {children}
             </div>
         </div>

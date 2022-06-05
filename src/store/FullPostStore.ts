@@ -1,6 +1,7 @@
 import {action, makeAutoObservable} from "mobx";
 import {postsAPI} from "../API/postsAPI";
-import {Post} from "../types/PostItem";
+import {Comment, Post} from "../types/PostItem";
+import {Paginated} from "../types/Paginated";
 
 
 class FullPostStore {
@@ -8,6 +9,7 @@ class FullPostStore {
         makeAutoObservable(this, {}, {autoBind: true})
     }
 
+    comments: Paginated<Comment> = {count: 0, next: null, previous: null, results: []}
     post: Post | null = null
     isLoading: boolean  = false
 
@@ -40,6 +42,25 @@ class FullPostStore {
             .then()
     }
 
+    fetchAllComments (login: string, blogSlug: string, postSlug: string) {
+        return postsAPI.getPostComments(login, blogSlug, postSlug)
+            .then(
+            action(
+                'fetchAllCommentsEnd',
+                (comments) => this.comments = comments
+            )
+        )
+            .catch(
+                action(
+                    'fetchCommentsfailed',
+                    (e) => console.log(e)
+                )
+            )
+    }
+
+    createComment (login: string, blogSlug: string, postSlug: string, content: string, post: number) {
+        return postsAPI.createPostComment(login, blogSlug, postSlug, content, post)
+    }
 
 }
 export const fullPostStore = new FullPostStore()

@@ -2,6 +2,7 @@ import React from 'react';
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import {blogListStore} from "../store/BlogListStore";
+import {authStore} from "../store/AuthStore";
 
 export type BlogForm = {
     title: string
@@ -23,28 +24,35 @@ export const CreateBlogForm = ({closeModal}: Props) => {
         })
     }
 
-
     return (
         <div className="create__blog">
-            <form className="create__blog-form" onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="title">
-                    Название Вашего блога
-                </label>
-                <input type="text"
-                       className="form__field-input" {...register('title', {required: 'Введено некорректное название'})}/>
-                {errors.title &&
-                <div className="auth__error-message wrong__email">{errors.title.message}</div>}
-                <label htmlFor="description">
-                    Описание блога (о чём ваш блог)
-                </label>
-                <input type="text"
-                       className="form__field-input" {...register('description', {required: 'Введено некорректное описание'})}/>
-                {errors.description &&
-                <div className="auth__error-message wrong__email">{errors.description.message}</div>}
-                <button>
-                    Создать блог
-                </button>
-            </form>
+            {
+                authStore.isAuth
+                ?
+                    <form className="create__blog-form" onSubmit={handleSubmit(onSubmit)}>
+                        <label htmlFor="title" className="create-blog-label">
+                            Название Вашего блога
+                        </label>
+                        <input type="text"
+                               className="form__field-input edit-form__field" {...register('title', {required: 'Введено некорректное название'})}/>
+                        {errors.title &&
+                        <div className="auth__error-message wrong__email">{errors.title.message}</div>}
+                        <label htmlFor="description" className="create-blog-label">
+                            Описание блога (о чём ваш блог)
+                        </label>
+                        <input type="text"
+                               className="form__field-input edit-form__field" {...register('description', {required: 'Введено некорректное описание'})}/>
+                        {errors.description &&
+                        <div className="auth__error-message wrong__email">{errors.description.message}</div>}
+                        <button className="create-blog-form-btn">
+                            Создать блог
+                        </button>
+                    </form>
+                    :
+                    <div className="not-authorizated">
+                        Чтобы выполнить данное действие авторизуйтесь
+                    </div>
+            }
         </div>
     );
 };
