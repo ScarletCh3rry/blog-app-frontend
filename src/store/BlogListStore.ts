@@ -49,7 +49,7 @@ class BlogList {
                     'creatingBlogFailed',
                     (e) => {
                         console.log(e)
-                        throw new Error('Oshibka :)')
+                        throw new Error(`Введены некорректны данные, возможно блог с таким названием уже существует, ${e}`)
                     }
                 )
             )

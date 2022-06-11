@@ -30,24 +30,18 @@ export const BlogPage = observer( () => {
                 {/*<div>*/}
                 {/*    <img src={fullBlogStore.blog?.owner.avatar} alt=""/>*/}
                 {/*</div>*/}
-                <div className="blog-page-info">
-                    Блог создал: {fullBlogStore.blog?.owner.login}
-                </div>
+                <div className="blog-page-info">Блог создал: {fullBlogStore.blog?.owner.login}</div>
                 {
-
+                    authStore.user?.name === fullBlogStore.blog?.owner.login &&
                     <div className="blog-page-info" id="create-post-link__container">
                         <NavLink className="create-post-link" to={`/blogs/${fullBlogStore.blog?.slug}/create-post/`}>
                             Создать пост
                         </NavLink>
-
+                        <button className="delete-blog-btn" onClick={() => deleteBlog(login!, blogSlug!)}>
+                            Удалить блог
+                        </button>
                     </div>
 
-                }
-                {
-                    authStore.user?.name === fullBlogStore.blog?.owner.login &&
-                    <button className="delete-blog-btn" onClick={() => deleteBlog(login!, blogSlug!)}>
-                        Удалить блог
-                    </button>
                 }
             </div>
             <FilteredPostList/>

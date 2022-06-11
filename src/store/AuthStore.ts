@@ -86,7 +86,7 @@ class AuthStore {
         }
         catch (e: any) {
             console.dir(e)
-            toast.error(`${e.response.data.login || e.response.data.password || e.response.data.login}`) // TODO: correct error displaying
+            toast.error(`${e.response.data.login || e.response.data.password || e.response.data.login}`)
         }
     }
 }

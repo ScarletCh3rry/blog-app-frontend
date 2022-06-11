@@ -6,7 +6,7 @@ export type Quiz = {
 }
 
 export type PassedQuestion = {
-    answer: string
+    answer: Answer
     user: User
 }
 
@@ -15,6 +15,7 @@ export type Question = {
     answers: Answer[]
     id: number
     chosen: string | null
+    total_answers: number
 }
 
 export type Answer = {

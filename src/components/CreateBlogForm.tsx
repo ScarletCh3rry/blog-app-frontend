@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import {blogListStore} from "../store/BlogListStore";
@@ -17,11 +17,18 @@ export const CreateBlogForm = ({closeModal}: Props) => {
     const {register, handleSubmit, formState: {errors}} = useForm<BlogForm>()
 
     const navigate = useNavigate()
+
+    const [errorValue, setErrorValie] = useState('')
+
+
     const onSubmit = (data: BlogForm) => {
         return blogListStore.createBlog(data).then(({slug, owner}) => {
             navigate(`/blogs/${owner.login}/${slug}`)
             closeModal()
         })
+            .catch((e) => {
+                setErrorValie(e.toString())
+            })
     }
 
     return (
@@ -47,6 +54,9 @@ export const CreateBlogForm = ({closeModal}: Props) => {
                         <button className="create-blog-form-btn">
                             Создать блог
                         </button>
+                        <div className="creating-error">
+                            {errorValue}
+                        </div>
                     </form>
                     :
                     <div className="not-authorizated">

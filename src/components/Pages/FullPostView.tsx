@@ -50,47 +50,38 @@ export const FullPostView = observer(() => {
 
     return (
         <div className="fullpost-container">
-            <div>
-                {fullPostStore.post?.description}
+            <div className="fullpost-title__container">
+                <NavLink className="post__user-link" id="fullpost__user-link" to={`/profile/${fullPostStore.post?.blog.owner.login}/`}>
+                    <img className="post__user-pic" src={fullPostStore.post?.blog.owner.avatar} alt=""/>
+                    {fullPostStore.post?.blog.owner.login}
+                </NavLink>
+                <h2 className="fullpost-title">{fullPostStore.post?.title}</h2>
             </div>
-            <div className="full-post__commentary-section">
-                Комментарии:
-                {
-                    fullPostStore.comments.results.map(comment => {
-                        return (
-                            <div key={comment.id}>{comment.owner.login} {comment.owner.avatar} {comment.text}</div>
-                        )
-                    })
-                }
-            </div>
-            {
-                authStore.isAuth
-                ?
-                    <div>
-                        Написать комментарий:
-                        <input type="textarea" onChange={e => setComment(e.target.value)}/>
-                        <button onClick={() => createComment(comment)}>Создать комментарий</button>
-                    </div>
-                    :
-                    <div className="not-authorizated">
-                        Авторизуйтесь, чтобы написать комментарий
-                    </div>
-            }
+            <div className="fullpost-description" dangerouslySetInnerHTML={{__html: fullPostStore.post?.description!}}/>
             {
                 fullPostStore.post?.blog.owner.login === authStore.user?.name &&
-                <button onClick={deletePost}>
+                <button className="delete-post-btn" onClick={deletePost}>
                     Удалить пост
                 </button>
             }
             {
+                fullPostStore.post?.blog.owner.login === authStore.user?.name &&
+                <div className="create-quiz__container">
+                    Введите название нового опроса:
+                    <input className="edit-form__field" id="quiz-title-input" type="textarea" onChange={e => setquizTitle(e.target.value)}/>
+                    <button className="create-quiz-btn" onClick={() => createQuiz(quizTitle)}>Создать опрос</button>
+                </div>
+            }
+            {
                 authStore.isAuth
-                ?
+                    ?
                     <div className="quiz-list">
+                        Список опросов:
                         {
                             quizListStore.quizes.results.map((quiz) => {
                                 return (
-                                    <div key={quiz.slug}>
-                                        <NavLink to={`${quiz.slug}`}>
+                                    <div className="quiz-list__item-container" key={quiz.slug}>
+                                        <NavLink className="quiz-list__item-link" to={`${quiz.slug}`}>
                                             {quiz.title}
                                         </NavLink>
                                     </div>
@@ -104,13 +95,36 @@ export const FullPostView = observer(() => {
                     </div>
             }
             {
-                fullPostStore.post?.blog.owner.login === authStore.user?.name &&
-                <div>
-                    Создать опрос:
-                    <input type="textarea" onChange={e => setquizTitle(e.target.value)}/>
-                    <button onClick={() => createQuiz(quizTitle)}>Создать опрос</button>
-                </div>
+                authStore.isAuth
+                ?
+                    <div className="create-comment__container">
+                        Написать комментарий:
+                        <input className="edit-form__field comment-text-input" type="textarea" onChange={e => setComment(e.target.value)}/>
+                        <button className="create-comment-btn" onClick={() => createComment(comment)}>Создать комментарий</button>
+                    </div>
+                    :
+                    <div className="not-authorizated">
+                        Авторизуйтесь, чтобы написать комментарий
+                    </div>
             }
+            <div className="full-post__commentary-section">
+                Комментарии:
+                {
+                    fullPostStore.comments.results.map(comment => {
+                        return (
+                            <div className="comment-item" key={comment.id}>
+                                <NavLink className="post__user-link" to={`/profile/${comment.owner.login}/`}>
+                                    <img className="post__user-pic" src={comment.owner.avatar} alt=""/>
+                                    {comment.owner.login}
+                                </NavLink>
+                                <div className="comment-item__text">
+                                    {comment.text}
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     );
 })

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {quizListStore} from "../../store/QuizListStore";
-import {useNavigate, useParams} from "react-router-dom";
+import {NavLink, useNavigate, useParams} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 import {useFieldArray, useForm} from 'react-hook-form';
 import {authStore} from "../../store/AuthStore";
@@ -53,7 +53,9 @@ export const QuizPage = observer(() => {
     return (
         <div className="quiz-page">
             <div className="quiz">
-                {quizListStore.quiz?.title}
+                <div className="quiz-title">
+                    {quizListStore.quiz?.title}
+                </div>
                 {
                     authStore.user?.name === fullPostStore.post?.blog.owner.login &&
                     <button className="delete-quiz-btn" onClick={() => deleteQuiz(login!, blogSlug!, postSlug!, quizSlug!)}>
@@ -68,8 +70,14 @@ export const QuizPage = observer(() => {
                                     <div className="quiz-question">
                                         {question.question}
                                     </div>
+                                    <div className="quiz-question__total-answers">
+                                        На этот вопрос ответило пользователей: {question.total_answers}
+                                    </div>
                                     {
-                                        question.answers.map((answer) => <AnswerItem key={answer.id} id={answer.id} answer={answer.answer} was_chosen_count={answer.was_chosen_count} question={question}/>)
+                                        question.answers.map((answer) => <AnswerItem key={answer.id} id={answer.id}
+                                                                                     answer={answer.answer}
+                                                                                     was_chosen_count={answer.was_chosen_count}
+                                                                                     question={question}/>)
                                     }
                                 </div>
                             )
@@ -77,29 +85,50 @@ export const QuizPage = observer(() => {
                     )
                 }
                 {/*{quizListStore.quiz?.sub_answers_list}*/}
+
+            </div>
+
+            <div className="sub_answers_list">
+                Список ответов пользователей на которых вы подписаны:
+                {quizListStore.quiz?.sub_answers_list.map((answer) => <div key={answer.answer.answer}>
+                    <NavLink className="post__user-link quiz-sub-answer__profile" to={`/profile/${answer.user.login}/`}>
+                        <img className="post__user-pic" src={`http://127.0.0.1:8000${answer.user.avatar}`} alt=""/>
+                        {answer.user.login}
+                    </NavLink>
+                    <div className="sub_answers_list-item">
+                        {answer.answer.answer}
+                    </div>
+                </div>)}
             </div>
             {   authStore.user?.name! === login!
                 &&
-                <form onSubmit={onSubmit}>
+                <form className="create-question-form" onSubmit={onSubmit}>
                     <div>Вопрос</div>
-                    <input type="text" {...register(`question`)}/>
+
+                    <input className="create-question-input edit-form__field" type="text" {...register(`question`)}/>
+
                     <div>Ответы</div>
 
-                    {fields.map((field, index) => (
-                        <input
-                            key={field.id} // important to include key with field's id
-                            {...register(`answers.${index}.value`)}
-                        />
+                    <div className="create-answer__container">
+                        {fields.map((field, index) => (
+                            <input
+                                className="create-answer-input edit-form__field"
+                                key={field.id} // important to include key with field's id
+                                {...register(`answers.${index}.value`)}
+                            />
 
-                    ))}
-                    <button type="button" onClick={() => append({value: ''})}>
-                        +++++++++
-                    </button>
-                    <button type="button" onClick={() => remove(fields.length - 1)}>
-                        ---------
-                    </button>
-                    <button type="submit">
-                        OAOAOAOAOA
+                        ))}
+                        <div className="add-answer-btn__container">
+                            <button className="add-answer-btn" type="button" onClick={() => append({value: ''})}>
+                                Добавить ответ
+                            </button>
+                            <button className="add-answer-btn" type="button" onClick={() => remove(fields.length - 1)}>
+                                Убрать ответ
+                            </button>
+                        </div>
+                    </div>
+                    <button className="create-question-btn" type="submit">
+                        Создать вопрос
                     </button>
                 </form>
             }

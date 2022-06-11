@@ -49,7 +49,7 @@ class PostList {
                             this.posts = [...this.posts, ...paginatedPosts.results]
                         }
                         this.totalPostsCount = paginatedPosts.count
-                    } // TODO: add count
+                    }
 
                 )
             )
@@ -84,7 +84,7 @@ class PostList {
                             this.posts = [...this.posts, ...paginatedPosts.results]
                         }
                         this.totalPostsCount = paginatedPosts.count
-                    } // TODO: add count
+                    }
                 )
             )
             .finally(
@@ -150,7 +150,10 @@ class PostList {
             .catch(
                 action(
                     'creatingPostFailed',
-                    (e) => console.log(e)
+                    (e) => {
+                        console.log(e)
+                        throw new Error(`Введены некорректны данные, возможно пост с таким названием уже существует, ${e}`)
+                    }
                 )
             )
             .finally(

@@ -3,6 +3,7 @@ import {quizListStore} from "../store/QuizListStore";
 import {authStore} from "../store/AuthStore";
 import {useParams} from "react-router-dom";
 import {Question} from "../types/Quiz";
+import {AiOutlineArrowUp, BsCheckCircle} from 'react-icons/all';
 
 type Props = {
     id: number
@@ -25,19 +26,17 @@ export const AnswerItem = (props: Props) => {
 
     return (
         <div className="answer-item">
-            <div className="quiz-answer">
-                {props.answer}
-            </div>
-            <button type="button" className="set-answer-btn" onClick={() => {
+            <button type="button" className="choose-answer__btn" onClick={() => {
                 setThisAnswer(props.id)
             }}>
+                <BsCheckCircle className="choose-answer__btn-icon"/>
                 {props.answer}
             </button>
             {
                 props.question.chosen === props.answer
                 &&
-                <div>
-                    Ответили {props.was_chosen_count} раз
+                <div className="was_chosen_count">
+                    <AiOutlineArrowUp className="arrow-up"/> Данный ответ выбрали {props.was_chosen_count} раз
                 </div>
             }
         </div>

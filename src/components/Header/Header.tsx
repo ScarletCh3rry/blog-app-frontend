@@ -21,10 +21,8 @@ export const Header = () => {
 
             <MyInput onChange={(e) => setQuery({...toObj(query), search: e.target.value})} value={query.get('search') || ''}/>
 
-            <button onClick={() => setModalActive(true)} className="create__blog-btn carousel-btn">
-                <span>
-                    Создать блог
-                </span>
+            <button onClick={() => setModalActive(true)} className="create__blog-btn">
+                Создать блог
             </button>
             <AccBar/>
             <Modal active={modalActive} setActive={setModalActive}>

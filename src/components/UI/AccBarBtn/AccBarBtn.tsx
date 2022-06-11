@@ -4,7 +4,6 @@ import {AccountFeatures} from "../../Header/AccountFeatures";
 import {AnimatePresence} from "framer-motion";
 import {authStore} from "../../../store/AuthStore";
 import {observer} from "mobx-react-lite";
-/*Dropdown account button*/
 
 export const AccBarBtn = observer(() => {
     const [isOpen, setIsOpen] = useState(false)
@@ -32,8 +31,9 @@ export const AccBarBtn = observer(() => {
                     height: '45px',
                     width: '45px',
                     borderRadius: '50%',
+                    border: '1px solid transparent'
                 }}
-                     src={authStore.user?.avatar}
+                     src={authStore.user?.avatar ? authStore.user?.avatar : 'http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png'}
                      alt=""
                 />
             </button>

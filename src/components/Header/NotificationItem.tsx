@@ -8,7 +8,7 @@ export const NotificationItem = () => {
             <NavLink to="" className="notification__link">
                 <div className="ntfImg__container">
                     <img style={{height: '45px', width: '45px', borderRadius: '50%'}}
-                         src={profilePicture} //TODO: вкинуть аватарку юзера в уведомления
+                         src={profilePicture}
                          alt=""
                     />
                 </div>

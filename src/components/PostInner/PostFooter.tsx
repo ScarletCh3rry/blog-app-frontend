@@ -3,7 +3,7 @@ import {postListStore, StorePost} from "../../store/PostListStore";
 import {observer} from "mobx-react-lite";
 import {authStore} from "../../store/AuthStore";
 import {useNavigate} from "react-router-dom";
-import { AiOutlineComment, MdOutlineQuiz } from 'react-icons/all';
+import {AiOutlineComment, AiOutlineEye, MdOutlineQuiz} from 'react-icons/all';
 type Props = {
     likes_count: number
     comments_count: number
@@ -38,7 +38,7 @@ export const PostFooter = observer((props: Props) => {
                 </p>
             </div>
             <div className="post__views post__counter">
-                <div className="post-view-img"/>
+                <AiOutlineEye className="post-view-img"/>
                 <p className="post__counter-text">
                     {props.views_count}
                 </p>

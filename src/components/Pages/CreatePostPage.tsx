@@ -40,10 +40,12 @@ export const CreatePostPage = observer(() => {
 
     const navigate = useNavigate()
 
+    const [errorValue, setErrorValue] = useState('')
+
     const onSubmit = (data: CreatePostForm) => {
         return postListStore.createPost(data.title, draftToHtml(convertToRaw(editorState.getCurrentContent())), selectedTags, blogSlug!)
             .then((createdPost) => navigate(`/blogs/${fullBlogStore.blog?.owner.login}/${fullBlogStore.blog?.slug}/${createdPost!.slug}`))
-
+            .catch((e) => setErrorValue(e.toString()))
     }
 
     const {register, handleSubmit, formState: {errors}} = useForm<CreatePostForm>()
@@ -57,6 +59,9 @@ export const CreatePostPage = observer(() => {
                 <div className="create__post__title">
                     <input {...register('title', {required: 'Введено некорректное название'})}
                            className="form__field-input"/>
+                           <div className="creating-error">
+                               {errorValue}
+                           </div>
                     {errors.title && <div className="create__error-message wrong__title">{errors.title.message}</div>}
                 </div>
                 {/*<div className="create__post__description">*/}
