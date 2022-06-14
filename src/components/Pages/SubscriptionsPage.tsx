@@ -11,7 +11,7 @@ export const SubscriptionsPage = observer(() => {
     const [query, setQuery] = useSearchParams()
 
     // @ts-ignore
-    const {login} = useParams<{login: string}>()
+    const {login} = useParams<string>()
     const observerElement = useRef<HTMLDivElement>(null)
     const totalPages = postListStore.pagesCount
     useObserver(observerElement, postListStore.currentPage < totalPages, postListStore.isSubloading || postListStore.isFirstLoading, postListStore.setNextPage)
