@@ -2,6 +2,7 @@ import {action, makeAutoObservable} from "mobx";
 import {postsAPI} from "../API/postsAPI";
 import {Comment, Post} from "../types/PostItem";
 import {Paginated} from "../types/Paginated";
+import {blogsAPI} from "../API/blogsAPI";
 
 
 class FullPostStore {
@@ -60,6 +61,18 @@ class FullPostStore {
 
     createComment (login: string, blogSlug: string, postSlug: string, content: string, post: number) {
         return postsAPI.createPostComment(login, blogSlug, postSlug, content, post)
+    }
+
+    setPostImage (login: string, blogSlug: string, postSlug: string, image: FormData) {
+       return blogsAPI.setPostImage(login, blogSlug, postSlug, image)
+           .then(
+               action(
+                   'postImageFetching',
+                   (data) => {
+                       this.post!.image = data.image
+                   }
+               )
+           )
     }
 
 }

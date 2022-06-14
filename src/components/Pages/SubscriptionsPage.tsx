@@ -29,8 +29,8 @@ export const SubscriptionsPage = observer(() => {
 
     return (
         <div className="subscriptions_page post__list-page">
-            <PostList isFirstLoading={postListStore.isFirstLoading} isSubloading={postListStore.isSubloading} observerElement={observerElement} postList={postListStore.posts}/>
             <TagSearch/>
+            <PostList isFirstLoading={postListStore.isFirstLoading} isSubloading={postListStore.isSubloading} observerElement={observerElement} postList={postListStore.posts}/>
         </div>
     );
 });

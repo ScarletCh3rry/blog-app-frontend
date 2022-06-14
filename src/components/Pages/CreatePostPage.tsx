@@ -19,6 +19,7 @@ export type CreatePostForm = {
 
 
 
+
 export const CreatePostPage = observer(() => {
 
     useEffect(() => {
@@ -31,7 +32,7 @@ export const CreatePostPage = observer(() => {
     const [selectedTags, setSelectedTags] = useState<number[]>([])
 
     const addTag = (id:number) => {
-         setSelectedTags([...selectedTags, id])
+        setSelectedTags([...selectedTags, id])
     }
 
     const removeTag = (id:number) => {
@@ -53,15 +54,16 @@ export const CreatePostPage = observer(() => {
     const [editorState, onEditorStateChange] = useState(EditorState.createEmpty())
 
 
+
     return (
         <div className="create__post">
             <form className="create__post-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="create__post__title">
                     <input {...register('title', {required: 'Введено некорректное название'})}
                            className="form__field-input"/>
-                           <div className="creating-error">
-                               {errorValue}
-                           </div>
+                    <div className="creating-error">
+                        {errorValue}
+                    </div>
                     {errors.title && <div className="create__error-message wrong__title">{errors.title.message}</div>}
                 </div>
                 {/*<div className="create__post__description">*/}
@@ -99,9 +101,6 @@ export const CreatePostPage = observer(() => {
                     Создать пост
                 </button>
             </form>
-
         </div>
     );
 })
-
-

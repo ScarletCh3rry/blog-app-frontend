@@ -11,6 +11,7 @@ export type Post = {
     id: number
     is_liked: boolean
     slug: string
+    image: string | null
 }
 
 export type Comment = {

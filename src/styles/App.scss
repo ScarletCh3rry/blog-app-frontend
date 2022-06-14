@@ -12,7 +12,7 @@ a.active {
   color: $highlighted
 }
 
-span{
+span {
   color: $textColor !important;
   background-color: transparent !important;
 }
@@ -102,7 +102,8 @@ span{
   object-fit: cover;
 }
 
-.create__blog-btn{
+.create__blog-btn {
+  margin-left: 15px;
   background-color: transparent;
   color: $textColor;
   border: 1px solid $textColor;
@@ -150,7 +151,7 @@ span{
 }
 
 .account__bar {
-  width: 140px;
+  width: 70px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -245,6 +246,7 @@ span{
 .post__list-page {
   margin-top: 15px;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-around;
 }
 
@@ -354,6 +356,8 @@ span{
 }
 
 .post__title {
+  text-overflow: ellipsis;
+  overflow: hidden;
   color: $textColor;
   transition: ease-in-out .3s;
 }
@@ -380,7 +384,7 @@ span{
   padding-bottom: 10px;
 }
 
-.create__blog{
+.create__blog {
   width: 100%;
   height: 100%;
 }
@@ -790,7 +794,7 @@ span{
   padding-top: 5px;
 }
 
-.blog-page-info__container{
+.blog-page-info__container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -824,7 +828,7 @@ span{
   margin: 30px;
 }
 
-.create-blog-form-btn{
+.create-blog-form-btn {
   background-color: transparent;
   color: $textColor;
   border: 1px solid $textColor;
@@ -834,37 +838,37 @@ span{
   transition: .3s ease-in-out;
 }
 
-.create-blog-form-btn:hover{
+.create-blog-form-btn:hover {
   color: $highlighted;
   border: 1px solid $highlighted;
 }
 
 
-.create-blog-label{
+.create-blog-label {
   color: $textColor;
 }
 
-.quiz-page{
+.quiz-page {
   width: 100%;
 }
 
-.quiz{
+.quiz {
   width: 100%;
   color: $textColor;
 }
 
-.not-authorizated{
+.not-authorizated {
   color: $highlighted;
   font-size: 1.3rem;
   padding-top: 10px;
 }
 
-.post-counter-icon{
+.post-counter-icon {
   font-size: 26px;
   color: $highlighted;
 }
 
-.delete-blog-btn{
+.delete-blog-btn {
   background-color: transparent;
   color: $textColor;
   border: 1px solid $textColor;
@@ -874,34 +878,34 @@ span{
   transition: .3s ease-in-out;
 }
 
-.delete-blog-btn:hover{
+.delete-blog-btn:hover {
   cursor: pointer;
   color: $highlighted;
   border: 1px solid $highlighted;
 }
 
-.fullpost-container{
+.fullpost-container {
 
 }
 
-.fullpost-title__container{
+.fullpost-title__container {
   padding-top: 30px;
   display: flex;
   align-items: center;
 }
 
-.fullpost-title{
+.fullpost-title {
   padding-left: 40px;
   color: $textColor;
 }
 
-.fullpost-description{
+.fullpost-description {
   color: $textColor;
   padding: 30px 30px;
   //padding-top: 20px;
 }
 
-.delete-post-btn{
+.delete-post-btn {
   margin-left: 30px;
   padding: 10px 20px;
   background-color: transparent;
@@ -911,24 +915,24 @@ span{
   cursor: pointer;
 }
 
-.delete-post-btn:hover{
+.delete-post-btn:hover {
   color: $highlighted;
   border: 1px solid $highlighted;
 }
 
-.create-quiz__container{
+.create-quiz__container {
   padding: 30px 30px;
   color: $textColor;
   display: flex;
   flex-direction: column;
 }
 
-#quiz-title-input{
+#quiz-title-input {
   padding-top: 15px;
   width: 100%;
 }
 
-.create-quiz-btn{
+.create-quiz-btn {
   align-self: center;
   width: 40%;
   margin-top: 15px;
@@ -940,43 +944,43 @@ span{
   cursor: pointer;
 }
 
-.create-quiz-btn:hover{
+.create-quiz-btn:hover {
   color: $highlighted;
   border: 1px solid $highlighted;
 }
 
-.quiz-list{
+.quiz-list {
   color: $textColor;
   margin-left: 30px;
 }
 
-.quiz-list__item-container{
+.quiz-list__item-container {
   padding-top: 10px;
 }
 
-.quiz-list__item-link{
+.quiz-list__item-link {
   color: $highlighted;
   transition: .3s ease-in-out;
 }
 
-.quiz-list__item-link:hover{
+.quiz-list__item-link:hover {
   padding-left: 5px;
   color: $textColor;
 }
 
-.create-comment__container{
+.create-comment__container {
   color: $textColor;
   display: flex;
   flex-direction: column;
   padding: 30px 30px;
 }
 
-.comment-text-input{
+.comment-text-input {
   padding-top: 15px;
   width: 100%;
 }
 
-.create-comment-btn{
+.create-comment-btn {
   align-self: center;
   width: 40%;
   margin-top: 15px;
@@ -988,36 +992,36 @@ span{
   cursor: pointer;
 }
 
-.create-comment-btn:hover{
+.create-comment-btn:hover {
   color: $highlighted;
   border: 1px solid $highlighted;
 }
 
-.full-post__commentary-section{
+.full-post__commentary-section {
   color: $textColor;
   padding-left: 30px;
 }
 
-.comment-item{
+.comment-item {
   width: 90%;
   padding-top: 25px;
 }
 
-.comment-item__text{
+.comment-item__text {
   padding-top: 15px;
   color: $textColor;
   word-wrap: break-word;
 }
 
-.quiz{
+.quiz {
   padding: 30px 30px;
 }
 
-.quiz-title{
+.quiz-title {
   color: $textColor;
 }
 
-.delete-quiz-btn{
+.delete-quiz-btn {
   align-self: center;
   width: 40%;
   margin-top: 15px;
@@ -1029,28 +1033,28 @@ span{
   cursor: pointer;
 }
 
-.delete-quiz-btn:hover{
+.delete-quiz-btn:hover {
   color: $highlighted;
   border: 1px solid $highlighted;
 }
 
-.quiz-question__container{
+.quiz-question__container {
   padding-top: 40px;
 }
 
-.quiz-question__total-answers{
+.quiz-question__total-answers {
   padding-top: 15px;
 }
 
-.quiz-question{
+.quiz-question {
   word-wrap: break-word;
 }
 
-.answer-item{
+.answer-item {
   padding-top: 15px;
 }
 
-.choose-answer__btn{
+.choose-answer__btn {
   background-color: transparent;
   border: none;
   color: $textColor;
@@ -1058,47 +1062,47 @@ span{
   transition: .3s ease-in-out;
 }
 
-.choose-answer__btn-icon{
+.choose-answer__btn-icon {
   color: $textColor;
   transition: .2s ease-in-out;
   margin-right: 10px;
 }
 
-.choose-answer__btn:hover .choose-answer__btn-icon{
+.choose-answer__btn:hover .choose-answer__btn-icon {
   color: $highlighted;
 }
 
-.arrow-up{
+.arrow-up {
   color: $textColor;
 }
 
-.was_chosen_count{
+.was_chosen_count {
   padding-top: 17px;
 }
 
-.create-question-form{
+.create-question-form {
   color: $textColor;
   padding: 10px 30px;
 }
 
-.create-question-input{
+.create-question-input {
   padding-top: 20px;
   margin-bottom: 20px;
   width: 100%;
 }
 
-.create-answer__container{
+.create-answer__container {
   padding: 20px 10px;
   display: flex;
   flex-direction: column;
 }
 
-.create-answer-input{
+.create-answer-input {
   padding-top: 25px;
   width: 100%;
 }
 
-.add-answer-btn{
+.add-answer-btn {
   align-self: center;
   width: 40%;
   margin-top: 15px;
@@ -1110,18 +1114,18 @@ span{
   cursor: pointer;
 }
 
-.add-answer-btn:hover{
+.add-answer-btn:hover {
   color: $highlighted;
   border: 1px solid $highlighted;
 }
 
-.add-answer-btn__container{
+.add-answer-btn__container {
   padding-top: 10px;
   display: flex;
   justify-content: space-around;
 }
 
-.create-question-btn{
+.create-question-btn {
   width: 100%;
   margin-top: 15px;
   padding: 10px 20px;
@@ -1132,29 +1136,29 @@ span{
   cursor: pointer;
 }
 
-.create-question-btn:hover{
+.create-question-btn:hover {
   color: $highlighted;
   border: 1px solid $highlighted;
 }
 
-.sub_answers_list{
+.sub_answers_list {
   color: $textColor;
   padding-left: 30px;
 }
 
-.quiz-sub-answer__profile{
+.quiz-sub-answer__profile {
   padding-top: 15px;
 }
 
-.sub_answers_list-item{
+.sub_answers_list-item {
   padding-top: 15px;
 }
 
-.creating-error{
+.creating-error {
   color: $textColor;
 }
 
-.auth__layout{
+.auth__layout {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1162,26 +1166,26 @@ span{
   color: $textColor;
 }
 
-.auth__form-container{
+.auth__form-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.auth__form-title{
+.auth__form-title {
   font-size: 1.3rem;
   margin: 100px auto 40px;
 }
 
-.form__field{
+.form__field {
   padding-top: 22px;
 }
 
-.form__field-input{
+.form__field-input {
   width: 100%;
 }
 
-.auth__submit-button{
+.auth__submit-button {
   color: $textColor;
   background-color: transparent;
   border: 1px solid $textColor;
@@ -1192,13 +1196,99 @@ span{
   transition: .3s ease-in-out;
 }
 
-.auth__submit-button:hover{
+.auth__submit-button:hover {
   color: $highlighted;
   border: 1px solid $highlighted;
 }
 
-.auth__form{
+.auth__form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.accbar__container {
+  width: 350px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+@media (max-width: 1000px) {
+  .header {
+    height: 100px;
+    flex-wrap: wrap;
+  }
+  .post__list-page {
+    flex-direction: column;
+  }
+  .tag__search-list{
+    margin: 10px 10px;
+    display: grid;
+    grid-template-columns: 49% 49%;
+    grid-gap: 10px 2%;
+
+  }
+  .tag__search-input{
+    display: flex;
+    justify-content: space-around;
+  }
+  .tag__search-button{
+    margin: 0;
+    font-size: 11px;
+  }
+  .post__list{
+    width: 90%;
+    margin: 15px auto;
+  }
+}
+
+@media (max-width: 716px) {
+  .main__logo {
+    font-size: 28px;
+    width: 180px;
+  }
+
+  .nav__link {
+    padding: 7px 15px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 657px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 250px;
+  }
+}
+
+@media (max-width: 450px) {
+  .navbar__container {
+    max-width: 325px;
+    justify-content: center;
+  }
+  .nav__link {
+    font-size: 15px;
+  }
+  .accbar__container {
+    width: 290px;
+    justify-content: center;
+  }
+  .navbar__container {
+    width: 290px;
+  }
+  .tag__search-input{
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 450px) {
+  .MyInput_myInput__LIT0H {
+    width: 240px !important;
+  }
 }

@@ -4,6 +4,7 @@ import {AccountFeatures} from "../../Header/AccountFeatures";
 import {AnimatePresence} from "framer-motion";
 import {authStore} from "../../../store/AuthStore";
 import {observer} from "mobx-react-lite";
+import {FaUserCircle} from 'react-icons/all';
 
 export const AccBarBtn = observer(() => {
     const [isOpen, setIsOpen] = useState(false)
@@ -27,15 +28,21 @@ export const AccBarBtn = observer(() => {
                 className={classes.AccBarBtn}
                 onClick={() => setIsOpen(prev => !prev)}
             >
-                <img style={{
-                    height: '45px',
-                    width: '45px',
-                    borderRadius: '50%',
-                    border: '1px solid transparent'
-                }}
-                     src={authStore.user?.avatar ? authStore.user?.avatar : 'http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png'}
-                     alt=""
-                />
+                {
+                    authStore.user?.avatar
+                    ?
+                        <img style={{
+                            height: '45px',
+                            width: '45px',
+                            borderRadius: '50%',
+                            border: '1px solid transparent'
+                        }}
+                             src={authStore.user?.avatar}
+                             alt=""
+                        />
+                        :
+                        <FaUserCircle style={{color: '#e3516f', fontSize: '35px'}}/>
+                }
             </button>
             <AnimatePresence>
                 {isOpen && <AccountFeatures/>}

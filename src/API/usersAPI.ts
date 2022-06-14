@@ -8,7 +8,6 @@ export type EditUserPayload = {
     login: string,
     email: string,
     avatar: FileList
-
 }
 
 class UsersAPI {

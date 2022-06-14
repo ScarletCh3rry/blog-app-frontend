@@ -8,8 +8,6 @@ export type LoginForm = {
     password: string
 }
 
-
-
 export const LoginPage = () => {
     const {register, handleSubmit, formState: {errors}} = useForm<LoginForm>()
 

@@ -4,6 +4,12 @@ import {NavLink, useNavigate, useParams} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 import {quizListStore} from "../../store/QuizListStore";
 import {authStore} from "../../store/AuthStore";
+import {useForm} from "react-hook-form";
+
+export type AddImageForm = {
+    image: FileList | null
+}
+
 
 export const FullPostView = observer(() => {
     const {login, blogSlug, postSlug} = useParams()
@@ -48,6 +54,23 @@ export const FullPostView = observer(() => {
         )
     }
 
+    const {register, handleSubmit} = useForm<AddImageForm>({
+        defaultValues: {
+            image: null
+        }
+    })
+
+
+
+    const onSubmit = (data: AddImageForm) => {
+        const formData = new FormData()
+        if (typeof data.image !== "string")
+        {
+            formData.append("image", data.image ? data.image[0] : "")
+        }
+        return fullPostStore.setPostImage(login!, blogSlug!, postSlug!, formData)
+            .then()
+    }
     return (
         <div className="fullpost-container">
             <div className="fullpost-title__container">
@@ -58,6 +81,17 @@ export const FullPostView = observer(() => {
                 <h2 className="fullpost-title">{fullPostStore.post?.title}</h2>
             </div>
             <div className="fullpost-description" dangerouslySetInnerHTML={{__html: fullPostStore.post?.description!}}/>
+            {
+                fullPostStore.post?.blog.owner.login === authStore.user?.name &&
+                <form className="addImageToPost" onSubmit={handleSubmit(onSubmit)}>
+                    <input className="file-upload" type="file" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" {...register("image")} />
+                    <button type="submit">Добавить картинку</button>
+                </form>
+            }
+            {
+                fullPostStore.post?.image &&
+                <img className="fullPost-image" src={fullPostStore.post?.image} alt=""/>
+            }
             {
                 fullPostStore.post?.blog.owner.login === authStore.user?.name &&
                 <button className="delete-post-btn" onClick={deletePost}>
