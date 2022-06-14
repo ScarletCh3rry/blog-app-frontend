@@ -23,7 +23,7 @@ export const SubscriptionsPage = observer(() => {
 
     useEffect(() => {
         if (postListStore.currentPage !== 1) {
-            postListStore.fetchSubscribedPosts(login, false, query.get('search'), query.getAll('tags')).then()
+            postListStore.fetchSubscribedPosts(login!, false, query.get('search'), query.getAll('tags')).then()
         }
     }, [postListStore.currentPage]) //eslint-disable-line
 
