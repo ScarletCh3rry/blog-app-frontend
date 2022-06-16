@@ -83,9 +83,9 @@ export const FullPostView = observer(() => {
             <div className="fullpost-description" dangerouslySetInnerHTML={{__html: fullPostStore.post?.description!}}/>
             {
                 fullPostStore.post?.blog.owner.login === authStore.user?.name &&
-                <form className="addImageToPost" onSubmit={handleSubmit(onSubmit)}>
-                    <input className="file-upload" type="file" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" {...register("image")} />
-                    <button type="submit">Добавить картинку</button>
+                <form className="addImageToPost" onSubmit={handleSubmit(onSubmit)} style={{marginBottom: '10px', marginTop: '10px'}}>
+                    <input className="postImg-file-upload" type="file" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" {...register("image")}/>
+                    <button className="post-image-add__btn" type="submit">Добавить картинку</button>
                 </form>
             }
             {

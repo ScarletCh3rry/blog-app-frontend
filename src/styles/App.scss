@@ -1322,3 +1322,33 @@ span {
   flex-direction: column;
   justify-content: center;
 }
+
+.post-image-add__btn{
+  margin-top: 15px;
+  color: $highlighted;
+  background-color: transparent;
+  border: 1px solid $highlighted;
+  border-radius: 5px;
+  padding: 8px 13px;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.post-image-add__btn:hover{
+  background-color: $highlighted;
+  color: $textColor;
+  border: 1px solid transparent;
+}
+
+.postImg-file-upload{
+  border: 1px solid $highlighted;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: .3s ease-in-out;
+  margin-right: 20px;
+}
+
+.postImg-file-upload:hover{
+  border: 1px solid $textColor;
+}
