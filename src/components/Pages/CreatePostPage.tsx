@@ -58,9 +58,10 @@ export const CreatePostPage = observer(() => {
     return (
         <div className="create__post">
             <form className="create__post-form" onSubmit={handleSubmit(onSubmit)}>
-                <div className="create__post__title">
+                <div className="create__post__title" style={{color: '#fff', marginBottom: '15px'}}>
+                    Введите название поста
                     <input {...register('title', {required: 'Введено некорректное название'})}
-                           className="form__field-input"/>
+                           className="form__field-input edit-form__field"/>
                     <div className="creating-error">
                         {errorValue}
                     </div>
@@ -85,7 +86,7 @@ export const CreatePostPage = observer(() => {
                                 const isActive = selectedTags.includes(tag.id)
                                 return(
                                     <button
-                                        className={isActive ? 'active tag__select-button' : 'tag__select-button'}
+                                        className={isActive ? 'active tag__select-button tag__search-button' : 'tag__select-button tag__search-button'}
                                         onClick={() => isActive ? removeTag(tag.id) : addTag(tag.id)}
                                         key={tag.id}
                                         type='button'
@@ -97,7 +98,7 @@ export const CreatePostPage = observer(() => {
                         )
                     }
                 </div>
-                <button>
+                <button className="create-post-btn">
                     Создать пост
                 </button>
             </form>

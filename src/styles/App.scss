@@ -1292,3 +1292,33 @@ span {
     width: 240px !important;
   }
 }
+
+.create__post__tags{
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20%;
+  grid-column-gap: 15px;
+  margin: 0 30px;
+}
+
+.create-post-btn{
+  margin-top: 15px;
+  color: $highlighted;
+  background-color: transparent;
+  border: 1px solid $highlighted;
+  border-radius: 5px;
+  padding: 8px 13px;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.create-post-btn:hover{
+  background-color: $highlighted;
+  color: $textColor;
+  border: 1px solid transparent;
+}
+
+.create__post-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
