@@ -3,7 +3,7 @@ import {ACCESS_TOKEN} from "../store/AuthStore";
 
 
 export const api = axios.create({
-    baseURL: 'http://127.0.0.1:8000/api/',
+    baseURL: 'https://cherry-blog-backend.herokuapp.com/api/',
     headers: {
         'Content-Type': 'application/json'
     }
