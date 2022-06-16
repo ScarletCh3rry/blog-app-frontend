@@ -8,6 +8,8 @@
 # testing
 /coverage
 
+axios-instance.ts
+
 # idea
 /.idea
 
