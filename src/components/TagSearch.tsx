@@ -44,7 +44,7 @@ export const TagSearch = observer(() => {
                             const isActive = queryTags.includes(tag.slug)
                             return(
                                 <button
-                                    className={isActive ? 'active tag__search-button' : 'tag__search-button'}
+                                    className={isActive ? 'active active-tag tag__search-button' : 'tag__search-button'}
                                     onClick={() => isActive ? removeTag(tag.slug) : addTag(tag.slug)}
                                     key={tag.slug}
                                 >

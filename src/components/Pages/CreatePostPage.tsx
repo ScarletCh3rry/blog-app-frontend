@@ -86,7 +86,7 @@ export const CreatePostPage = observer(() => {
                                 const isActive = selectedTags.includes(tag.id)
                                 return(
                                     <button
-                                        className={isActive ? 'active tag__select-button tag__search-button' : 'tag__select-button tag__search-button'}
+                                        className={isActive ? 'active active-tag tag__select-button tag__search-button' : 'tag__select-button tag__search-button'}
                                         onClick={() => isActive ? removeTag(tag.id) : addTag(tag.id)}
                                         key={tag.id}
                                         type='button'
