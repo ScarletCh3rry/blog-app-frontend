@@ -106,7 +106,7 @@ export const EditProfileForm = observer(() => {
                             <input  id="file-upload" className="file-upload" type="file" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" {...register("avatar.value", {required: "You need to set your new avatar"})} />
                         </>
                         :
-                        <span className="profile-info">
+                        <span className="profile-info" id="profile-info-avatar__path">
                                 Выбран файл: {avatar.value}
                         </span>
                 }

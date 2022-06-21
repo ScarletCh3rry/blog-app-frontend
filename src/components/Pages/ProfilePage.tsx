@@ -47,7 +47,7 @@ export const ProfilePage = observer(() => {
                             </NavLink>
                         </div>
                         <div className="user-profile-info">
-                            <div className="profile__date-joined user-profile-info-element">
+                            <div className="profile__date-joined user-profile-info-element" id="user-profile-info__full-page">
                                 Пользователь был зарегистрирован: {userProfileStore.user!.date_joined}
                             </div>
                             <div className="profile__last-login user-profile-info-element">

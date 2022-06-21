@@ -522,8 +522,8 @@ span {
 
 .profile-link__container {
   height: 110px;
-  width: 1200px;
-  max-width: calc(100% - 50px);
+  width: 1400px;
+  max-width: calc(100% - 20px);
   margin-top: 25px;
   border: 2px solid #b5b5b5;
   border-radius: 15px;
@@ -772,7 +772,7 @@ span {
 }
 
 .blog-list-item {
-  width: 40%;
+  width: 60%;
   padding: 15px;
   margin-top: 15px;
   border: 2px solid $textColor;
@@ -1214,6 +1214,51 @@ span {
   align-items: center;
 }
 
+@media (max-width: 1200px) {
+
+  .user__list-page {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-gap: 30px;
+    justify-content: center;
+  }
+
+  .profile-link__container {
+    width: auto;
+    max-width: initial;
+    height: 150px;
+    padding: 5px;
+  }
+
+  .profile__email{
+    text-align: center;
+  }
+
+  .profile-avatar__container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .profile__date-joined {
+    text-align: center;
+  }
+
+  #profile-avatar__adaptive {
+    width: 40px;
+    height: 40px;
+  }
+
+  .user__profile-link {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 10px;
+  }
+
+  .profile-info {
+    margin: 0 auto;
+
+  }
+}
 
 @media (max-width: 1000px) {
   .header {
@@ -1223,25 +1268,39 @@ span {
   .post__list-page {
     flex-direction: column;
   }
-  .tag__search-list{
+  .tag__search-list {
     margin: 10px 10px;
     display: grid;
     grid-template-columns: 49% 49%;
     grid-gap: 10px 2%;
 
   }
-  .tag__search-input{
+  .tag__search-input {
     display: flex;
     justify-content: space-around;
   }
-  .tag__search-button{
+  .tag__search-button {
     margin: 0;
     font-size: 11px;
   }
-  .post__list{
+  .post__list {
     width: 90%;
     margin: 15px auto;
   }
+
+  .profile-link__container{
+    height: 200px;
+    word-break: break-word;
+  }
+
+  .user-changes__container{
+    width: auto;
+  }
+
+  .user-profile-info{
+    width: auto;
+  }
+
 }
 
 @media (max-width: 716px) {
@@ -1253,6 +1312,38 @@ span {
   .nav__link {
     padding: 7px 15px;
     font-size: 18px;
+  }
+
+  .post__tags {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .post__datetime-content {
+    font-size: 13px;
+  }
+
+  .post__user-info {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .post__header {
+    flex-direction: column;
+  }
+
+  .user__list-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .blog-list-item{
+    width: 85%;
+  }
+
+  .blog-list-item__inner{
+    word-break: break-word;
   }
 }
 
@@ -1281,9 +1372,13 @@ span {
   .navbar__container {
     width: 290px;
   }
-  .tag__search-input{
+  .tag__search-input {
     flex-direction: column;
     align-items: center;
+  }
+
+  .create-comment-btn {
+    width: 100%;
   }
 }
 
@@ -1291,16 +1386,36 @@ span {
   .MyInput_myInput__LIT0H {
     width: 240px !important;
   }
+
+  #user-profile-info__full-page{
+    text-align: start;
+    word-break: break-word;
+  }
+
+  .user-profile-avatar{
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  .editProfileForm{
+    width: 300px;
+  }
+
 }
 
-.create__post__tags{
+#profile-info-avatar__path{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.create__post__tags {
   display: grid;
   grid-template-columns: 20% 20% 20% 20%;
   grid-column-gap: 15px;
   margin: 0 30px;
 }
 
-.create-post-btn{
+.create-post-btn {
   margin-top: 15px;
   color: $highlighted;
   background-color: transparent;
@@ -1311,19 +1426,19 @@ span {
   transition: .3s ease-in-out;
 }
 
-.create-post-btn:hover{
+.create-post-btn:hover {
   background-color: $highlighted;
   color: $textColor;
   border: 1px solid transparent;
 }
 
-.create__post-form{
+.create__post-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.post-image-add__btn{
+.post-image-add__btn {
   margin-top: 15px;
   color: $highlighted;
   background-color: transparent;
@@ -1334,13 +1449,13 @@ span {
   transition: .3s ease-in-out;
 }
 
-.post-image-add__btn:hover{
+.post-image-add__btn:hover {
   background-color: $highlighted;
   color: $textColor;
   border: 1px solid transparent;
 }
 
-.postImg-file-upload{
+.postImg-file-upload {
   border: 1px solid $highlighted;
   padding: 6px 12px;
   cursor: pointer;
@@ -1349,6 +1464,11 @@ span {
   margin-right: 20px;
 }
 
-.postImg-file-upload:hover{
+.postImg-file-upload:hover {
   border: 1px solid $textColor;
+}
+
+.fullpost-description > *{
+  max-width: 100%;
+  object-fit: cover;
 }
