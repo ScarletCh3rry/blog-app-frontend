@@ -1472,3 +1472,7 @@ span {
   max-width: 100%;
   object-fit: cover;
 }
+
+.fullpost-description > *{
+  overflow: hidden;
+}
